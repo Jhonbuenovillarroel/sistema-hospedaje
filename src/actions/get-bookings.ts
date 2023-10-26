@@ -1,9 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma/prisma";
-import { Booking } from "@/app/panel-administracion/reservas/page";
 import { sortBookings } from "@/utils/bookingFunctions";
+import { Booking } from "@/app/panel-administracion/reservas/page";
 
-export async function GET(req: NextRequest) {
+export const obtenerReservas = async () => {
    const bookingsDatabase = await prisma.booking.findMany();
    const roomsDatabase = await prisma.room.findMany();
 
@@ -24,5 +23,7 @@ export async function GET(req: NextRequest) {
 
    const orderedBookings = sortBookings(bookings);
 
-   return NextResponse.json(orderedBookings);
-}
+   console.log(orderedBookings);
+
+   return orderedBookings;
+};
