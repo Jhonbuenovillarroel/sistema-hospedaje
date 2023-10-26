@@ -100,7 +100,9 @@ export default function Reservas() {
    };
 
    useEffect(() => {
-      obtenerReservas();
+      (async () => {
+         await obtenerReservas();
+      })();
    }, []);
 
    return (
