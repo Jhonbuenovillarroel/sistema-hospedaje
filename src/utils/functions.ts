@@ -74,3 +74,37 @@ export const calculateMonth = (month: number) => {
          break;
    }
 };
+
+export const deleteBooking = async (id: string) => {
+   const response = await fetch("/api/delete-booking", {
+      method: "POST",
+      headers: {
+         "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+         id,
+      }),
+   });
+
+   const result = await response.json();
+
+   return result;
+
+   // if (result.error) {
+   //    Swal.fire({
+   //       title: result.error,
+   //       icon: "error",
+   //       color: "#fff",
+   //       background: "#101010",
+   //       confirmButtonColor: "#CB993F",
+   //    });
+   // } else if (result.booking) {
+   //    Swal.fire({
+   //       title: "Reserva eliminada correctamente",
+   //       color: "#fff",
+   //       background: "#101010",
+   //       confirmButtonColor: "#CB993F",
+   //       icon: "success",
+   //    });
+   // }
+};
