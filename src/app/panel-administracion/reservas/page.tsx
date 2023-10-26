@@ -62,6 +62,8 @@ export default function Reservas() {
 
       const result = await response.json();
 
+      console.log(result);
+
       setBookings(result);
    };
 
