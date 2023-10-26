@@ -62,6 +62,8 @@ export default function Reservas() {
 
       const result = await response.json();
 
+      console.log(result);
+
       setBookings(result);
    };
 
@@ -84,7 +86,7 @@ export default function Reservas() {
             icon: "error",
             color: "#fff",
             background: "#101010",
-            confirmButtonColor: "CB993F",
+            confirmButtonColor: "#CB993F",
          });
       } else if (result.booking) {
          Swal.fire({
