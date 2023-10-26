@@ -60,6 +60,9 @@ const AdminUserForm = ({
             imageUrlsForm.append("folderPath", "/profile-pictures");
             const imageUrlsResponse = await fetch("/api/upload-images", {
                method: "POST",
+               headers: {
+                  "Content-Type": "multipart/form-data; boundary=----",
+               },
                body: imageUrlsForm,
             });
 
