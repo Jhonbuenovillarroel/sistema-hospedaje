@@ -1,6 +1,5 @@
 import prisma from "@/lib/prisma/prisma";
 import { NextRequest, NextResponse } from "next/server";
-import { deleteMultipleFiles } from "@/utils/functions";
 import fs from "fs";
 import path from "path";
 
@@ -8,11 +7,6 @@ export const deleteRoom = async (id: any, imageUrls: any) => {
    const rooms = await prisma.room.findMany();
 
    try {
-      for (let i = 0; i < rooms.length; i++) {
-         if (rooms[i].id === id) {
-            deleteMultipleFiles(imageUrls, fs, path);
-         }
-      }
       const deletedImages = await prisma.image.deleteMany({
          where: {
             roomId: id,
