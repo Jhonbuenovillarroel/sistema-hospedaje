@@ -15,7 +15,7 @@ export default function Home() {
                <div className="min-w-full relative before:content-['] before:absolute before:top-0 before:right-0 before:bottom-0 before:left-0 before:bg-[rgba(0,0,0,0.6)] snap-center h-screen bg-cover bg-no-repeat bg-center bg-[url('/plaza-jauja-noche.jpg')] flex items-center justify-center">
                   <div className="w-[200px] sm:w-[360px] md:w-[400px] lg:w-[700px] z-10 flex flex-col items-center justify-center text-center">
                      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold">
-                        Encanto Central
+                        Encanto fjkldsjfksjdf
                      </h1>
                      <p className="mt-4 sm:w-[240px] text-sm lg:text-base">
                         Comodidad y auténtico encanto en el corazón de Jauja
