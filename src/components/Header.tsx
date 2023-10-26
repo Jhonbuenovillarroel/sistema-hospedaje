@@ -10,10 +10,6 @@ import { usePathname } from "next/navigation";
 export default function Header() {
    const pathname = usePathname();
 
-   if (/^\/panel-administracion(\/[\w-]+)*$/.test(pathname)) {
-      return;
-   }
-
    const [showMenu, setShowMenu] = useState<string>(
       "flex flex-col h-0 opacity-0"
    );
@@ -42,6 +38,10 @@ export default function Header() {
          window.removeEventListener("scroll", handleScroll);
       };
    }, []);
+
+   if (/^\/panel-administracion(\/[\w-]+)*$/.test(pathname)) {
+      return;
+   }
 
    return (
       <header

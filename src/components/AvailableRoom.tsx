@@ -13,7 +13,7 @@ interface Props {
    description: string;
    adults: number;
    roomNumber: number;
-   children: number;
+   childrens: number;
    view: string;
    bed: string;
    category: string;
@@ -27,7 +27,7 @@ export default function AvailableRoom({
    description,
    adults,
    roomNumber,
-   children,
+   childrens,
    view,
    bed,
    category,
@@ -78,7 +78,7 @@ export default function AvailableRoom({
                         <MdKeyboardArrowRight /> Adultos: {adults}
                      </li>
                      <li className="flex gap-2 items-center">
-                        <MdKeyboardArrowRight /> Niños: {children}
+                        <MdKeyboardArrowRight /> Niños: {childrens}
                      </li>
                      <li className="flex flex-wrap gap-2 items-center">
                         <MdKeyboardArrowRight /> Comodidades:{" "}
@@ -124,7 +124,7 @@ export default function AvailableRoom({
                            true,
                            roomNumber,
                            adults,
-                           children
+                           childrens
                         );
                         router.push("/pago");
                      }}

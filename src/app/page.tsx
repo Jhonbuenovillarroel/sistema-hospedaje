@@ -61,14 +61,14 @@ export default function Home() {
                   Historia y Hospitalidad
                </h2>
                <p className="mt-4">
-                  En Hospedaje 'El Rinconcito', nuestra historia es la de la
-                  hospitalidad auténtica. Nos enorgullecemos de ofrecer un
+                  En Hospedaje &quot;El Rinconcito&quot;, nuestra historia es la
+                  de la hospitalidad auténtica. Nos enorgullecemos de ofrecer un
                   refugio tranquilo y cómodo en el corazón de Jauja. Cada
                   detalle, desde nuestras habitaciones hasta nuestro servicio,
                   está diseñado para hacer que tu estancia sea especial.
-                  Descubre quiénes somos y lo que hacemos en Hospedaje 'El
-                  Rinconcito'. Esperamos ser tu elección en tu próxima visita a
-                  Jauja.
+                  Descubre quiénes somos y lo que hacemos en Hospedaje &quot;El
+                  Rinconcito&quot;. Esperamos ser tu elección en tu próxima
+                  visita a Jauja.
                </p>
             </div>
             <div className="mt-24 flex flex-col items-center justify-center">

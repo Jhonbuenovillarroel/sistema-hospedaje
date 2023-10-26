@@ -177,6 +177,7 @@ export default function RoomDetails({
                {urlImages &&
                   urlImages.map((element, i) => (
                      <Image
+                        key={i}
                         className="h-full snap-center object-cover"
                         src={element}
                         width={500}

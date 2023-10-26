@@ -9,7 +9,7 @@ export default function HabitacionEstandar() {
             descriptionTitle="Experimenta la Comodidad y Encanto en Nuestra Habitación con Vista a la Calle Especial"
             descriptionContent={
                <p className="mt-8 leading-7 md:leading-8">
-                  En Hospedaje "El Rinconcito", te presentamos nuestra
+                  En Hospedaje &quot;El Rinconcito&quot;, te presentamos nuestra
                   Habitación Elegante Matrimonial con vista a la calle, donde la
                   amplitud y el confort se unen para brindarte una experiencia
                   inolvidable en Jauja. Esta habitación espaciosa y acogedora te

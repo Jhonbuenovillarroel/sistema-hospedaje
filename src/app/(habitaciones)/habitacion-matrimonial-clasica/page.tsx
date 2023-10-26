@@ -9,14 +9,14 @@ export default function HabitacionMatrimonialClasica() {
             descriptionTitle="Descubre la Comodidad y Elegancia en Nuestra Habitación con Vista a la Calle"
             descriptionContent={
                <p className="mt-8 leading-7 md:leading-8">
-                  En Hospedaje "El Rinconcito", te ofrecemos una experiencia de
-                  alojamiento excepcional en nuestra Habitación con Vista a la
-                  Calle. Con un precio asequible, esta habitación espaciosa es
-                  perfecta para aquellos que desean un espacio extra para
-                  relajarse y disfrutar de la belleza de Jauja. Desde el momento
-                  en que entras, quedarás cautivado por la amplitud y la
-                  elegancia de esta habitación. La vista a la calle te permite
-                  absorber la esencia de Jauja desde la comodidad de tu
+                  En Hospedaje &quot;El Rinconcito&quot;, te ofrecemos una
+                  experiencia de alojamiento excepcional en nuestra Habitación
+                  con Vista a la Calle. Con un precio asequible, esta habitación
+                  espaciosa es perfecta para aquellos que desean un espacio
+                  extra para relajarse y disfrutar de la belleza de Jauja. Desde
+                  el momento en que entras, quedarás cautivado por la amplitud y
+                  la elegancia de esta habitación. La vista a la calle te
+                  permite absorber la esencia de Jauja desde la comodidad de tu
                   alojamiento. <br /> <br /> Despiértate con la luz del sol que
                   se filtra por las ventanas y observa el mundo pasar mientras
                   disfrutas de tu café matutino. La Habitación con Vista a la

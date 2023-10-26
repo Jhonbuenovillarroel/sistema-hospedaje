@@ -16,7 +16,9 @@ export default function PanelAdministracion() {
                height={900}
                alt="logo hospedaje"
             />
-            <p className="text-4xl font-semibold">Hospedaje "El Rinconcito"</p>
+            <p className="text-4xl font-semibold">
+               Hospedaje &quot;El Rinconcito&quot;
+            </p>
          </div>
       </section>
    );

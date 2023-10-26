@@ -99,7 +99,7 @@ export default function ResultadosDeBusqueda() {
                               name={element.name}
                               description={element.description}
                               adults={element.adults}
-                              children={element.children}
+                              childrens={element.children}
                               view={element.view}
                               bed={element.bed}
                               category={element.category}

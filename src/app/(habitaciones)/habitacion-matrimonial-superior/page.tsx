@@ -9,7 +9,7 @@ export default function HabitacionEstandar() {
             descriptionTitle="Espacios Amplios y Confort Inigualable en Jauja"
             descriptionContent={
                <p className="mt-8 leading-7 md:leading-8">
-                  En Hospedaje "El Rinconcito", te presentamos nuestra
+                  En Hospedaje &quot;El Rinconcito&quot;, te presentamos nuestra
                   Habitación Matrimonial Superior, una experiencia que combina
                   espacio generoso y comodidad en su máxima expresión. Esta
                   habitación te ofrece un ambiente elegante y acogedor para que

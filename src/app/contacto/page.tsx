@@ -167,8 +167,9 @@ export default function Contacto() {
                            className="relative top-1 bg-transparent outline-none"
                         />
                         <label htmlFor="permission">
-                           Doy mi consentimiento a Hospedaje "El Rinconcito"
-                           para recolectar mis datos a través de este formulario
+                           Doy mi consentimiento a Hospedaje &quot;El
+                           Rinconcito&quot; para recolectar mis datos a través
+                           de este formulario
                         </label>
                      </div>
 

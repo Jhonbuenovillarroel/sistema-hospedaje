@@ -25,9 +25,9 @@ export default function SobreNosotros() {
             </div>
             <div className="mt-16 px-10 leading-7 text-center flex justify-center">
                <p className="max-w-[800px]">
-                  En Hospedaje 'El Rinconcito', la hospitalidad es nuestra
-                  pasión y la satisfacción de nuestros huéspedes es nuestro
-                  mayor logro. Desde nuestros humildes comienzos hasta
+                  En Hospedaje &quot;El Rinconcito&quot;, la hospitalidad es
+                  nuestra pasión y la satisfacción de nuestros huéspedes es
+                  nuestro mayor logro. Desde nuestros humildes comienzos hasta
                   convertirnos en una opción de confianza en Jauja, hemos
                   recorrido un camino de dedicación y compromiso.
                </p>
@@ -70,19 +70,19 @@ export default function SobreNosotros() {
          <section className="mb-16">
             <div className="pt-24 px-8 md:max-w-[800px] md:px-20 lg:max-w-[950px] lg:px-28">
                <h2 className="text-3xl font-bold">
-                  Nuestra Historia en Hospedaje 'El Rinconcito'
+                  Nuestra Historia en Hospedaje &quot;El Rinconcito&quot;
                </h2>
                <p className="mt-4">
                   Fundado por amantes de Jauja y apasionados por brindar
-                  experiencias inolvidables, Hospedaje 'El Rinconcito' se ha
-                  convertido en un refugio donde los viajeros encuentran
+                  experiencias inolvidables, Hospedaje &quot;El Rinconcito&quot;
+                  se ha convertido en un refugio donde los viajeros encuentran
                   comodidad y autenticidad. <br /> <br /> Nuestra visión es
                   simple: ofrecer un lugar donde los huéspedes se sientan como
                   en casa. Nuestro equipo está compuesto por personas que
                   comparten un profundo amor por la región y su cultura. <br />
                   <br /> Estamos aquí para asegurarnos de que tu estancia sea
                   perfecta, brindándote consejos locales y haciendo que te
-                  sientas parte de la familia 'El Rinconcito'.
+                  sientas parte de la familia &quot;El Rinconcito&quot;.
                </p>
             </div>
          </section>
