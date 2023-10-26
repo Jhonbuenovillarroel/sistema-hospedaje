@@ -1,0 +1,5 @@
+{
+  "https://pocpaymentserve.s3.amazonaws.com/payform.min.css": { "integrity": "sha512-j5KzN17R/4KnmXiPYWABelzcdsmAGFjjT9xqqWpnRVmHthkW0l/DgaUiB/wjmRDsKpTixjuh/AnWt0yeuKpFVA==", "contentType": "text/css" },
+  "https://pocpaymentserve.s3.amazonaws.com/payform.min.js": { "integrity": "sha512-DYZGzmzsFD9FsOmbTfMYgxWbe40JSAZlu8YCC0A78zA2ZPAmT3mI6LEmTh5JZvV5GfdOcik5uBhbGUXHtPMY2Q==", "contentType": "application/javascript" },
+  "version": 1
+}

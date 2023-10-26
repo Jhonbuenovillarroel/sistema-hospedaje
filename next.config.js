@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+   experimental: {
+      urlImports: ["https://pocpaymentserve.s3.amazonaws.com"],
+   },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
