@@ -8,7 +8,9 @@ export async function getAccessToken() {
          method: "GET",
          headers: {
             "Content-Type": "application/json",
-            Authorization: `Basic Z2lhbmNhZ2FsbGFyZG9AZ21haWwuY29tOkF2MyR0cnV6`,
+            Authorization: `Basic ${btoa(
+               "integraciones@niubiz.com.pe:_7z3@8fF"
+            )}`,
          },
       }
    );
