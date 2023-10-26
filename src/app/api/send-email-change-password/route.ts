@@ -47,7 +47,11 @@ export async function POST(req: NextRequest) {
                   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
                </head>
                <body style="font-family: 'Raleway', sans-serif;">
-                  <a href=${`http://localhost:3000/cambiar-contrasena?token=${token}`}>Cambiar Contraseña</a>
+                  <a href=${
+                     process.env.NODE_ENV === "development"
+                        ? `http://localhost:3000/cambiar-contrasena?token=${token}`
+                        : `https://hospedajerinconcito.com/cambiar-contrasena?token=${token}`
+                  }>Cambiar Contraseña</a>
                </body>
             </html>
 
