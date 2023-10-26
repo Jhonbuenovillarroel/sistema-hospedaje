@@ -10,6 +10,10 @@ import { useRouter } from "next/navigation";
 export default function InicioSesion() {
    const { data: session, status } = useSession();
 
+   useEffect(() => {
+      console.log(session);
+   }, [session]);
+
    const [loading, setLoading] = useState<boolean>(false);
 
    const router = useRouter();
