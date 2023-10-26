@@ -84,7 +84,7 @@ export default function Reservas() {
             icon: "error",
             color: "#fff",
             background: "#101010",
-            confirmButtonColor: "CB993F",
+            confirmButtonColor: "#CB993F",
          });
       } else if (result.booking) {
          Swal.fire({
