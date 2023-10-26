@@ -441,6 +441,7 @@ const BookingForm = ({
 
             <div className="flex flex-col items-center gap-6">
                <button
+                  disabled={loading}
                   className="bg-[#CB993F] flex items-center justify-center hover:scale-110 transition-all duration-300 mt-12 w-full max-w-[300px] sm:max-w-[320px] h-10 rounded-full"
                   onClick={() => {}}
                >

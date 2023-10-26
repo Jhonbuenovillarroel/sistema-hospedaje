@@ -763,7 +763,10 @@ export default function Pago() {
                                     className="py-4 border-b border-zinc-600"
                                     id="txtCvv"
                                  ></div>
-                                 <button className="bg-[#CB993F] flex items-center justify-center hover:scale-110 transition-all duration-300 mt-4 w-full max-w-[200px] sm:max-w-[280px] h-10 rounded-full">
+                                 <button
+                                    disabled={loading}
+                                    className="bg-[#CB993F] flex items-center justify-center hover:scale-110 transition-all duration-300 mt-4 w-full max-w-[200px] sm:max-w-[280px] h-10 rounded-full"
+                                 >
                                     {loading ? (
                                        <div
                                           className="flex items-center justify-center"

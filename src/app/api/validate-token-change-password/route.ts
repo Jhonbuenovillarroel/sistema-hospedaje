@@ -6,10 +6,6 @@ import bcrypt from "bcryptjs";
 export async function GET(req: NextRequest) {
    const cookieStore = cookies();
 
-   const password = await bcrypt.hash("jhonbueno", 12);
-
-   console.log(password);
-
    const token = cookieStore.get("changePasswordToken")?.value;
 
    try {

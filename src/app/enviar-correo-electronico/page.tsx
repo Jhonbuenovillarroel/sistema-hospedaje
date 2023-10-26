@@ -87,7 +87,10 @@ const Page = () => {
                      />
                   </div>
 
-                  <button className="mt-6 w-full bg-[#CB993F] h-10 hover:bg-[#daad5b] rounded-md">
+                  <button
+                     disabled={loading}
+                     className="mt-6 w-full bg-[#CB993F] h-10 hover:bg-[#daad5b] rounded-md"
+                  >
                      {loading ? (
                         <div
                            className="flex items-center justify-center"

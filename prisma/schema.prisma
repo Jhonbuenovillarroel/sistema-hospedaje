@@ -46,6 +46,12 @@ model User {
   sessions      Session[]
 }
 
+model Customer {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String    
+}
+
 model Amenitie {
   id            String    @id @default(cuid())
   name          String

@@ -306,6 +306,7 @@ export default function BookForm({
             </div>
          )}
          <button
+            disabled={loading}
             onClick={() => {
                if (invalidDate) {
                   Swal.fire({

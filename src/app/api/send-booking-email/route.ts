@@ -238,7 +238,7 @@ export async function POST(req: NextRequest) {
             <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
          </head>
          <body style="font-family: 'Raleway', sans-serif;">
-            <h1>Aquí están los detalles de tu reserva</h1>
+            <h1>Aquí están los detalles de tu reserva ${name}</h1>
 
             <div style="max-width: 700px; margin: 20px auto; background-color: #202020; border-radius: 12px; padding-top: 32px; padding-bottom: 40px; padding-right: 24px; padding-left: 24px">
 

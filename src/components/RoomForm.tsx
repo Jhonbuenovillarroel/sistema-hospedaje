@@ -583,7 +583,10 @@ const RoomForm = ({
                   </div>
 
                   <div className="flex flex-col w-full items-center justify-center">
-                     <button className="bg-[#CB993F] flex items-center justify-center hover:scale-110 transition-all duration-300 mt-6 w-full h-10 rounded-full">
+                     <button
+                        disabled={loading}
+                        className="bg-[#CB993F] flex items-center justify-center hover:scale-110 transition-all duration-300 mt-6 w-full h-10 rounded-full"
+                     >
                         {loading && loading ? (
                            <div
                               className="flex items-center justify-center"
