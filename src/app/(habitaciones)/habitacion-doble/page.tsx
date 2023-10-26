@@ -9,7 +9,7 @@ export default function HabitacionEstandar() {
             descriptionTitle="Comodidad y Espacio para Compartir en Jauja"
             descriptionContent={
                <p className="mt-8 leading-7 md:leading-8">
-                  En Hospedaje 'El Rinconcito', te presentamos nuestra
+                  En Hospedaje "El Rinconcito", te presentamos nuestra
                   Habitación Doble, un espacio diseñado para brindar comodidad y
                   amplitud a aquellos que viajan en pareja o con amigos. Esta
                   habitación es perfecta para quienes buscan compartir momentos

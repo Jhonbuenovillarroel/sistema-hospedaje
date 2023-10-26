@@ -9,7 +9,7 @@ export default function HabitacionMatrimonialClasica() {
             descriptionTitle="Descubre la Comodidad y Elegancia en Nuestra Habitación con Vista a la Calle"
             descriptionContent={
                <p className="mt-8 leading-7 md:leading-8">
-                  En Hospedaje 'El Rinconcito', te ofrecemos una experiencia de
+                  En Hospedaje "El Rinconcito", te ofrecemos una experiencia de
                   alojamiento excepcional en nuestra Habitación con Vista a la
                   Calle. Con un precio asequible, esta habitación espaciosa es
                   perfecta para aquellos que desean un espacio extra para

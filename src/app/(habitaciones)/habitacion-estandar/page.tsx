@@ -10,7 +10,7 @@ export default function HabitacionEstandar() {
             Habitación Interior Especial"
             descriptionContent={
                <p className="mt-8 leading-7 md:leading-8">
-                  En Hospedaje 'El Rinconcito', sabemos que la tranquilidad es
+                  En Hospedaje "El Rinconcito", sabemos que la tranquilidad es
                   un tesoro en sí mismo. Nuestra Habitación Interior te ofrece
                   un remanso de serenidad en el corazón de Jauja, a un precio
                   que se adapta a tu presupuesto. Aunque esta habitación no

@@ -9,7 +9,7 @@ export default function HabitacionEstandar() {
             descriptionTitle="Espacio y Comodidad para Tu Grupo o Familia en Jauja"
             descriptionContent={
                <p className="mt-8 leading-7 md:leading-8">
-                  En Hospedaje 'El Rinconcito', te presentamos nuestra
+                  En Hospedaje "El Rinconcito", te presentamos nuestra
                   Habitación Triple, diseñada para ofrecer espacio y comodidad a
                   grupos de amigos o familias que deseen compartir momentos
                   especiales en Jauja. Esta habitación es la elección perfecta
