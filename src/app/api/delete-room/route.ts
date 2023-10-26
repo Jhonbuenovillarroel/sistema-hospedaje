@@ -1,6 +1,8 @@
 import prisma from "@/lib/prisma/prisma";
 import { NextRequest, NextResponse } from "next/server";
 import { deleteMultipleFiles } from "@/utils/functions";
+import fs from "fs";
+import path from "path";
 
 export async function POST(req: NextRequest) {
    const body = await req.json();
@@ -10,7 +12,7 @@ export async function POST(req: NextRequest) {
    try {
       for (let i = 0; i < rooms.length; i++) {
          if (rooms[i].id === body.id) {
-            deleteMultipleFiles(body.imageUrls);
+            deleteMultipleFiles(body.imageUrls, fs, path);
          }
       }
       const deletedImages = await prisma.image.deleteMany({

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { BsCalendar2Plus } from "react-icons/bs";
-import { calculateMonth } from "@/app/resultados-de-busqueda/page";
+import { calculateMonth } from "@/utils/functions";
 import BookingDetailsPopup from "@/components/BookingDetailsPopup";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { MdDelete, MdOutlineEditNote } from "react-icons/md";

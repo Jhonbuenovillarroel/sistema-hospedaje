@@ -3,13 +3,13 @@
 import React from "react";
 
 import { useEffect, useState } from "react";
-import { calculateMonth } from "@/app/resultados-de-busqueda/page";
 import { AiOutlineClose } from "react-icons/ai";
 import { Booking } from "@/app/panel-administracion/reservas/page";
 import Swal from "sweetalert2";
 import { MdDelete, MdOutlineEditNote } from "react-icons/md";
 import { db } from "@/utils/indexeddb-database";
 import { useLiveQuery } from "dexie-react-hooks";
+import { calculateMonth } from "@/utils/functions";
 
 interface Props {
    name: string;

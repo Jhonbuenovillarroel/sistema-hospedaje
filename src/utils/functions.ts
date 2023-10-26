@@ -1,8 +1,8 @@
-import fs from "fs";
-import path from "path";
+// import fs from "fs";
+// import path from "path";
 
-export const deleteFile = (filePath: any) => {
-   fs.unlink(path.join(process.cwd() + "/public" + filePath), (error) => {
+export const deleteFile = (filePath: any, fs: any, path: any) => {
+   fs.unlink(path.join(process.cwd() + "/public" + filePath), (error: any) => {
       if (error) {
          console.log(`Error al eliminar el archivo: ${error}`);
       } else {
@@ -15,11 +15,11 @@ export const deleteFile = (filePath: any) => {
    });
 };
 
-export const deleteMultipleFiles = (imageUrls: any) => {
+export const deleteMultipleFiles = (imageUrls: any, fs: any, path: any) => {
    for (let i = 0; i < imageUrls.length; i++) {
       fs.unlink(
          path.join(process.cwd() + "/public" + imageUrls[i]),
-         (error) => {
+         (error: any) => {
             if (error) {
                console.log(`Error al eliminar el archivo: ${error}`);
             } else {
@@ -31,5 +31,46 @@ export const deleteMultipleFiles = (imageUrls: any) => {
             }
          }
       );
+   }
+};
+
+export const calculateMonth = (month: number) => {
+   switch (month) {
+      case 1:
+         return "Enero";
+         break;
+      case 2:
+         return "Febrero";
+         break;
+      case 3:
+         return "Marzo";
+         break;
+      case 4:
+         return "Abril";
+         break;
+      case 5:
+         return "Mayo";
+         break;
+      case 6:
+         return "Junio";
+         break;
+      case 7:
+         return "Julio";
+         break;
+      case 8:
+         return "Agosto";
+         break;
+      case 9:
+         return "Septiembre";
+         break;
+      case 10:
+         return "Octubre";
+         break;
+      case 11:
+         return "Noviembre";
+         break;
+      case 12:
+         return "Diciembre";
+         break;
    }
 };

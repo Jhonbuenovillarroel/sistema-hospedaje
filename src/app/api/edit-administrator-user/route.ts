@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
       for (let i = 0; i < users.length; i++) {
          if (users[i].id === userId) {
             if (users[i].image) {
-               deleteFile(users[i].image);
+               deleteFile(users[i].image, fs, path);
             }
          }
       }

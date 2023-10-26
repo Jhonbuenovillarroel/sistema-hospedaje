@@ -1,6 +1,6 @@
 "use client";
 
-import { calculateMonth } from "@/app/resultados-de-busqueda/page";
+import { calculateMonth } from "@/utils/functions";
 import Gallery from "@/components/Gallery";
 import RoomForm from "@/components/RoomForm";
 import { setDefaultResultOrder } from "dns/promises";

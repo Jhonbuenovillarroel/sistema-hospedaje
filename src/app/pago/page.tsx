@@ -821,7 +821,7 @@ export default function Pago() {
                      Nuestra información
                   </p>
                   <div className="text-base flex flex-col gap-1">
-                     <p>Hospedaje "El Rinconcito"</p>
+                     <p>Hospedaje &quot;El Rinconcito&quot;</p>
                      <p>Jr. Salaverry 861</p>
                   </div>
                </div>

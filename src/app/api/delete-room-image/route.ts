@@ -1,6 +1,8 @@
 import prisma from "@/lib/prisma/prisma";
 import { deleteFile } from "@/utils/functions";
 import { NextRequest, NextResponse } from "next/server";
+import fs from "fs";
+import path from "path";
 
 export async function POST(req: NextRequest) {
    const body = await req.json();
@@ -8,7 +10,7 @@ export async function POST(req: NextRequest) {
    const { urlImage } = body;
 
    try {
-      deleteFile(urlImage);
+      deleteFile(urlImage, fs, path);
 
       const deletedImage = await prisma.image.deleteMany({
          where: {
