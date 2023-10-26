@@ -20,6 +20,9 @@ export interface Booking {
 
 export default async function Reservas() {
    const bookings = await obtenerReservas();
+
+   console.log(bookings);
+
    // const obtenerReservas = async () => {
    //    const response = await fetch("/api/get-bookings");
 
