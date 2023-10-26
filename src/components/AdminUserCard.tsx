@@ -121,6 +121,18 @@ const AdminUserCard = ({
                                  confirmButtonColor: "#CB993F",
                               });
                            } else if (result.username) {
+                              const responseDeleteImage = await fetch(
+                                 "/api/delete-images",
+                                 {
+                                    method: "POST",
+                                    headers: {
+                                       "Content-Type": "application/json",
+                                    },
+                                    body: JSON.stringify({
+                                       imageUrls: [image],
+                                    }),
+                                 }
+                              );
                               Swal.fire({
                                  title: `El usuario ${result.username} se eliminó correctamente`,
                                  color: "#fff",

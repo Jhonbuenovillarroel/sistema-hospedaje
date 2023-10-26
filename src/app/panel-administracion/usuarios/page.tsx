@@ -1,11 +1,5 @@
-"use client";
-
-import AdminUserCard from "@/components/AdminUserCard";
-import AdminUserForm from "@/components/AdminUserForm";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import { FaUserPlus } from "react-icons/fa6";
-import Swal from "sweetalert2";
+import { obtenerUsuariosAdministracion } from "@/actions/get-admin-users";
+import UsersTable from "@/components/UsersTable";
 
 export interface User {
    email: string;
@@ -15,122 +9,10 @@ export interface User {
    password: string;
 }
 
-const Usuarios = () => {
-   const [users, setUsers] = useState<User[]>([]);
-   const [showUserForm, setShowUserForm] = useState<boolean>(false);
-   const [edit, setEdit] = useState<boolean>(false);
-   const [userId, setUserId] = useState<string>("");
-   const [currentUser, setCurrentUser] = useState<User>({
-      username: "",
-      email: "",
-      image: "",
-      id: "",
-      password: "",
-   });
+const Usuarios = async () => {
+   const users = await obtenerUsuariosAdministracion();
 
-   const obtenerUsuariosAdministracion = async () => {
-      const response = await fetch("/api/get-admin-users");
-
-      const result = await response.json();
-
-      setUsers(result);
-   };
-
-   const eliminarUsuario = async (id: string, urlImage: string) => {
-      const response = await fetch("/api/delete-user", {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/json",
-         },
-         body: JSON.stringify({
-            id,
-            urlImage,
-         }),
-      });
-
-      const result = await response.json();
-
-      return result;
-   };
-
-   useEffect(() => {
-      obtenerUsuariosAdministracion();
-   }, []);
-
-   useEffect(() => {
-      if (edit) {
-         for (let i = 0; i < users.length; i++) {
-            if (users[i].id === userId) {
-               setCurrentUser(users[i]);
-            }
-         }
-      }
-   }, [edit, userId]);
-
-   return (
-      <section className="px-8 pt-24 pb-12 flex flex-col items-center justify-start w-full gap-10">
-         {showUserForm ? (
-            <AdminUserForm
-               edit={edit}
-               setCurrentUser={setCurrentUser}
-               userId={userId ? userId : ""}
-               currentUser={currentUser}
-               setShowUserForm={setShowUserForm}
-            />
-         ) : (
-            <>
-               <div>
-                  <button
-                     onClick={() => {
-                        setEdit(false);
-                        setShowUserForm(true);
-                        setCurrentUser({
-                           username: "",
-                           email: "",
-                           image: "",
-                           id: "",
-                           password: "",
-                        });
-                     }}
-                     className="flex items-center justify-center gap-2 rounded-full h-14 px-6 text-white bg-zinc-800"
-                  >
-                     Agregar Usuario <FaUserPlus className="w-5 h-5" />
-                  </button>
-               </div>
-               <div className="">
-                  <div className="max-w-[800px] text-center bg-[rgb(155,152,74)] rounded-tr-md rounded-tl-md py-4 px-6 gap-3 grid grid-cols-6 items-center justify-items-center">
-                     <p className="col-span-3 sm:flex sm:items-center sm:justify-center sm:col-span-1">
-                        Usuario
-                     </p>
-                     <p className="hidden sm:flex sm:items-center sm:justify-center col-span-3">
-                        Email
-                     </p>
-                     <p className="hidden sm:flex sm:items-center sm:justify-center col-span-1">
-                        Foto
-                     </p>
-                     <p className="col-span-3 sm:col-span-1">Opciones</p>
-                  </div>
-
-                  {users &&
-                     users.map((element: User, i) => (
-                        <AdminUserCard
-                           key={i}
-                           users={users}
-                           username={element.username}
-                           email={element.email}
-                           image={element.image}
-                           id={element.id}
-                           setUserId={setUserId}
-                           setEdit={setEdit}
-                           setShowUserForm={setShowUserForm}
-                           eliminarUsuario={eliminarUsuario}
-                        />
-                     ))}
-               </div>
-            </>
-         )}
-      </section>
-   );
+   return <UsersTable users={users} />;
 };
 
 export default Usuarios;

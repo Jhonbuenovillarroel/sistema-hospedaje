@@ -130,7 +130,42 @@ const RoomDetailsPopup = ({
                               }
                            });
                         } else {
-                           await deleteRoom(id, images);
+                           const resultDeleteRoom = await deleteRoom(
+                              room.id,
+                              room.images
+                           );
+
+                           if (resultDeleteRoom.error) {
+                              Swal.fire({
+                                 title: resultDeleteRoom.error,
+                                 color: "#fff",
+                                 icon: "error",
+                                 background: "#101010",
+                                 confirmButtonText: "Ok",
+                                 confirmButtonColor: "#CB993F",
+                              });
+                           } else if (resultDeleteRoom.room) {
+                              const responseDeleteImage = await fetch(
+                                 "/api/delete-images",
+                                 {
+                                    method: "POST",
+                                    headers: {
+                                       "Content-Type": "application/json",
+                                    },
+                                    body: JSON.stringify({
+                                       imageUrls: room.images,
+                                    }),
+                                 }
+                              );
+                              Swal.fire({
+                                 title: `La habitación ${resultDeleteRoom.room.name} se eliminó correctamente`,
+                                 color: "#fff",
+                                 icon: "success",
+                                 background: "#101010",
+                                 confirmButtonText: "Ok",
+                                 confirmButtonColor: "#CB993F",
+                              });
+                           }
                         }
                      } else if (result.isDenied) {
                      }
