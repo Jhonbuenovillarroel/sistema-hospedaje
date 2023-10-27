@@ -15,9 +15,10 @@ import { deleteBooking } from "@/utils/functions";
 
 interface Props {
    bookings: Booking[];
+   cookies: any;
 }
 
-const BookingsTable = ({ bookings }: Props) => {
+const BookingsTable = ({ bookings, cookies }: Props) => {
    // const [bookings, setBookings] = useState([]);
    const [addBooking, setAddBooking] = useState<boolean>(false);
    const [showBookingDetailsPopup, setShowBookingDetailsPopup] =
@@ -45,6 +46,8 @@ const BookingsTable = ({ bookings }: Props) => {
    const [edit, setEdit] = useState<boolean>(false);
 
    const dates: any = useLiveQuery(() => db.dates.toArray());
+
+   console.log(cookies);
 
    return (
       <>

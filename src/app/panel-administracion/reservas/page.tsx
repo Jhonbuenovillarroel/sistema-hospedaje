@@ -1,5 +1,6 @@
 import BookingsTable from "@/components/BookingsTable";
 import { obtenerReservas } from "@/actions/get-bookings";
+import { cookies } from "next/headers";
 
 export interface Booking {
    checkIn: string;
@@ -21,9 +22,13 @@ export interface Booking {
 export default async function Reservas() {
    const bookings = await obtenerReservas();
 
+   const cookieStore = cookies();
+
+   console.log(cookieStore.getAll());
+
    return (
       <>
-         <BookingsTable bookings={bookings} />
+         <BookingsTable cookies={cookieStore.getAll()} bookings={bookings} />
       </>
    );
 }
