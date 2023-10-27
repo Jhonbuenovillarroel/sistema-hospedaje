@@ -1,5 +1,6 @@
 import RoomsTable from "@/components/RoomsTable";
 import { getRooms } from "@/actions/get-rooms";
+import { cookies } from "next/headers";
 
 export interface Room {
    adults: number;
@@ -18,6 +19,8 @@ export interface Room {
 
 export default async function Habitaciones() {
    const rooms: Room[] = await getRooms();
+
+   const cookieStore = cookies();
 
    // const deleteRoom = async (id: any, imageUrls: any) => {
    //    const response = await fetch("/api/delete-room", {

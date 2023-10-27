@@ -1,5 +1,6 @@
 import { obtenerUsuariosAdministracion } from "@/actions/get-admin-users";
 import UsersTable from "@/components/UsersTable";
+import { cookies } from "next/headers";
 
 export interface User {
    email: string;
@@ -11,6 +12,8 @@ export interface User {
 
 const Usuarios = async () => {
    const users = await obtenerUsuariosAdministracion();
+
+   const cookieStore = cookies();
 
    return <UsersTable users={users} />;
 };
