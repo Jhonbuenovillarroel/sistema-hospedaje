@@ -22,39 +22,5 @@ export default async function Habitaciones() {
 
    const cookieStore = cookies();
 
-   // const deleteRoom = async (id: any, imageUrls: any) => {
-   //    const response = await fetch("/api/delete-room", {
-   //       method: "POST",
-   //       headers: {
-   //          "Content-Type": "application/json",
-   //       },
-   //       body: JSON.stringify({ id, imageUrls }),
-   //    });
-
-   //    const result = await response.json();
-
-   //    if (result.error) {
-   //       Swal.fire({
-   //          title: result.error,
-   //          color: "#fff",
-   //          icon: "error",
-   //          background: "#101010",
-   //          confirmButtonText: "Ok",
-   //          confirmButtonColor: "#CB993F",
-   //       });
-   //    } else if (result.room) {
-   //       Swal.fire({
-   //          title: `La habitación ${result.room.name} se eliminó correctamente`,
-   //          color: "#fff",
-   //          icon: "success",
-   //          background: "#101010",
-   //          confirmButtonText: "Ok",
-   //          confirmButtonColor: "#CB993F",
-   //       });
-   //    }
-
-   //    return result;
-   // };
-
    return <RoomsTable rooms={rooms} />;
 }
