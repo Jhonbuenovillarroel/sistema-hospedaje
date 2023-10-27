@@ -58,10 +58,13 @@ const AdminUserForm = ({
                imageUrlsForm.append(`image${i + 1}`, images[i]);
             }
             imageUrlsForm.append("folderPath", "/profile-pictures");
-            const imageUrlsResponse = await fetch("/api/upload-images", {
-               method: "POST",
-               body: imageUrlsForm,
-            });
+            const imageUrlsResponse = await fetch(
+               "https://hospedajerinconcito.com/api/upload-images",
+               {
+                  method: "POST",
+                  body: imageUrlsForm,
+               }
+            );
 
             const imageUrls = await imageUrlsResponse.json();
 
