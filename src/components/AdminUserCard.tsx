@@ -17,6 +17,7 @@ interface Props {
    setShowUserForm: Function;
    eliminarUsuario: Function;
    users: User[];
+   setCurrentUser: Function;
 }
 
 const AdminUserCard = ({
@@ -29,6 +30,7 @@ const AdminUserCard = ({
    setShowUserForm,
    eliminarUsuario,
    users,
+   setCurrentUser,
 }: Props) => {
    const [showAdminUserDetailsPopup, setShowAdminUserDetailsPopup] =
       useState<boolean>(false);
@@ -153,6 +155,13 @@ const AdminUserCard = ({
                </div>
                <div
                   onClick={() => {
+                     setCurrentUser(() => {
+                        for (let i = 0; i < users.length; i++) {
+                           if (users[i].id === id) {
+                              return users[i];
+                           }
+                        }
+                     });
                      setUserId(id);
                      setShowUserForm(true);
                      setEdit(true);

@@ -73,6 +73,7 @@ const UsersTable = ({ users }: Props) => {
                      users.map((element: User, i) => (
                         <AdminUserCard
                            key={i}
+                           setCurrentUser={setCurrentUser}
                            users={users}
                            username={element.username}
                            email={element.email}
