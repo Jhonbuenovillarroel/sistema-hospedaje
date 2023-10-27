@@ -62,78 +62,78 @@ const AdminUserForm = ({
             const imagesDataResponse = await fetch("/api/upload-images", {
                method: "POST",
                headers: {
-                  Allow: "POST, PUT",
+                  Allow: "POST",
                },
                body: imagesForm,
             });
 
             const imagesData = await imagesDataResponse.json();
 
-            if (imagesData.error) {
-               toast.error(imagesData.error, {
-                  style: {
-                     background: "#CF3434",
-                  },
-                  iconTheme: {
-                     primary: "#CA5353",
-                     secondary: "#fff",
-                  },
-               });
-               setTimeout(() => {
-                  setLoading(false);
-               }, 2000);
-               return;
-            }
+            // if (imagesData.error) {
+            //    toast.error(imagesData.error, {
+            //       style: {
+            //          background: "#CF3434",
+            //       },
+            //       iconTheme: {
+            //          primary: "#CA5353",
+            //          secondary: "#fff",
+            //       },
+            //    });
+            //    setTimeout(() => {
+            //       setLoading(false);
+            //    }, 2000);
+            //    return;
+            // }
 
-            const response = await fetch(
-               edit
-                  ? "/api/edit-administrator-user"
-                  : "/api/register-administrator-user",
-               {
-                  method: "POST",
-                  body: JSON.stringify({
-                     username: currentUser?.username,
-                     email: currentUser?.email,
-                     password: currentUser?.password,
-                     imagesData: imagesData,
-                     userId,
-                  }),
-               }
-            );
+            // const response = await fetch(
+            //    edit
+            //       ? "/api/edit-administrator-user"
+            //       : "/api/register-administrator-user",
+            //    {
+            //       method: "POST",
+            //       body: JSON.stringify({
+            //          username: currentUser?.username,
+            //          email: currentUser?.email,
+            //          password: currentUser?.password,
+            //          imagesData: imagesData,
+            //          userId,
+            //       }),
+            //    }
+            // );
 
-            const result = await response.json();
+            // const result = await response.json();
 
-            if (result.error) {
-               toast.error(result.error, {
-                  style: {
-                     background: "#CF3434",
-                  },
-                  iconTheme: {
-                     primary: "#CA5353",
-                     secondary: "#fff",
-                  },
-               });
-               setTimeout(() => {
-                  setLoading(false);
-               }, 2000);
-            }
-            if (result.user) {
-               toast.success(
-                  edit
-                     ? "Se guardaron los cambios"
-                     : "Usuario agregado correctamente",
-                  {
-                     style: {
-                        color: "#000",
-                     },
-                  }
-               );
+            // if (result.error) {
+            //    toast.error(result.error, {
+            //       style: {
+            //          background: "#CF3434",
+            //       },
+            //       iconTheme: {
+            //          primary: "#CA5353",
+            //          secondary: "#fff",
+            //       },
+            //    });
+            //    setTimeout(() => {
+            //       setLoading(false);
+            //    }, 2000);
+            // }
+            // if (result.user) {
+            //    toast.success(
+            //       edit
+            //          ? "Se guardaron los cambios"
+            //          : "Usuario agregado correctamente",
+            //       {
+            //          style: {
+            //             color: "#000",
+            //          },
+            //       }
+            //    );
 
-               setTimeout(() => {
-                  setShowUserForm(false);
-                  setLoading(false);
-               }, 2000);
-            }
+            //    setTimeout(() => {
+            //       setShowUserForm(false);
+            //       setLoading(false);
+            //    }, 2000);
+            // }
          }}
          className="flex max-w-[400px] w-full flex-col gap-4 bg-zinc-900 rounded-md py-8 px-8 items-center justify-center"
       >

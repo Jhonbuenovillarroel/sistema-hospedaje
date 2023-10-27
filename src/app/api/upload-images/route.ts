@@ -9,7 +9,9 @@ const processImage = async (image: any, folderPath: any) => {
    const buffer = Buffer.from(bytes);
    const filePath = path.join(process.cwd(), `public${folderPath}`, image.name);
 
-   writeFile(filePath, buffer);
+   console.log(buffer);
+
+   // writeFile(filePath, buffer);
 
    return `${folderPath}/${image.name}`;
 };
@@ -47,27 +49,27 @@ export async function POST(req: NextRequest) {
                images[i],
                form.get("folderPath")
             );
-            const res = await uploadImage(filePath);
+            // const res = await uploadImage(filePath);
 
             // Eliminar la imagen
-            fs.unlink(
-               path.join(process.cwd() + "/public" + filePath),
-               (error: any) => {
-                  if (error) {
-                     console.log(`Error al eliminar el archivo: ${error}`);
-                  } else {
-                     console.log(
-                        `El archivo ${path.join(
-                           process.cwd() + "/public" + filePath
-                        )} ha sido eliminado con éxito`
-                     );
-                  }
-               }
-            );
+            // fs.unlink(
+            //    path.join(process.cwd() + "/public" + filePath),
+            //    (error: any) => {
+            //       if (error) {
+            //          console.log(`Error al eliminar el archivo: ${error}`);
+            //       } else {
+            //          console.log(
+            //             `El archivo ${path.join(
+            //                process.cwd() + "/public" + filePath
+            //             )} ha sido eliminado con éxito`
+            //          );
+            //       }
+            //    }
+            // );
 
-            urls.push({ imageUrl: res.secure_url, imageName: res.public_id });
+            // urls.push({ imageUrl: res.secure_url, imageName: res.public_id });
          }
-         return NextResponse.json(urls);
+         return NextResponse.json([]);
       } else {
          return NextResponse.json([]);
       }
