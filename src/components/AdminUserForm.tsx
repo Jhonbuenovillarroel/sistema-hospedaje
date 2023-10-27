@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import { User } from "@/app/panel-administracion/usuarios/page";
+import { POST } from "@/app/api/get-available-rooms/route";
 
 interface Props {
    setShowUserForm: Function;
@@ -60,6 +61,9 @@ const AdminUserForm = ({
             imagesForm.append("folderPath", "/profile-pictures");
             const imagesDataResponse = await fetch("/api/upload-images", {
                method: "POST",
+               headers: {
+                  Allow: "POST, PUT",
+               },
                body: imagesForm,
             });
 
