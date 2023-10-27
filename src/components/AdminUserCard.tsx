@@ -42,6 +42,7 @@ const AdminUserCard = ({
       <>
          {showAdminUserDetailsPopup && (
             <AdminUserDetailsPopup
+               setCurrentUser={setCurrentUser}
                showAdminUserDetailsPopup={showAdminUserDetailsPopup}
                setShowAdminUserDetailsPopup={setShowAdminUserDetailsPopup}
                popupTransform={popupTransform}

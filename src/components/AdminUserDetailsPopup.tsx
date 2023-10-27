@@ -21,6 +21,7 @@ interface Props {
    eliminarUsuario: Function;
    id: string;
    users: User[];
+   setCurrentUser: Function;
 }
 
 const AdminUserDetailsPopup = ({
@@ -37,6 +38,7 @@ const AdminUserDetailsPopup = ({
    eliminarUsuario,
    id,
    users,
+   setCurrentUser,
 }: Props) => {
    useEffect(() => {
       setPopupTransform("w-full h-full opacity-100");
@@ -157,6 +159,13 @@ const AdminUserDetailsPopup = ({
             </div>
             <div
                onClick={() => {
+                  setCurrentUser(() => {
+                     for (let i = 0; i < users.length; i++) {
+                        if (users[i].id === id) {
+                           return users[i];
+                        }
+                     }
+                  });
                   setUserId(id);
                   setShowUserForm(true);
                   setEdit(true);
