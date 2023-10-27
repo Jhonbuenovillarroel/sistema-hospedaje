@@ -17,6 +17,7 @@
       "api": "^6.1.1",
       "autoprefixer": "10.4.15",
       "bcryptjs": "^2.4.3",
+      "cloudinary": "^1.41.0",
       "dexie": "^3.2.4",
       "dexie-react-hooks": "^1.1.6",
       "encoding": "^0.1.13",

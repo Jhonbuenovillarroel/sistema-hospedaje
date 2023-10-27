@@ -10,7 +10,8 @@ export const obtenerUsuariosAdministracion = async () => {
       users.push({
          username: usersDatabase[i].username,
          email: usersDatabase[i].email,
-         image: usersDatabase[i].image,
+         imageUrl: usersDatabase[i].imageUrl,
+         imageName: usersDatabase[i].imageName,
          id: usersDatabase[i].id,
       });
    }

@@ -53,23 +53,20 @@ const AdminUserForm = ({
 
             const formData: FormData = new FormData(e.currentTarget);
             formData.delete("images");
-            const imageUrlsForm = new FormData();
+            const imagesForm = new FormData();
             for (let i = 0; i < images.length; i++) {
-               imageUrlsForm.append(`image${i + 1}`, images[i]);
+               imagesForm.append(`image${i + 1}`, images[i]);
             }
-            imageUrlsForm.append("folderPath", "/profile-pictures");
-            const imageUrlsResponse = await fetch(
-               "https://www.hospedajerinconcito.com/api/upload-images",
-               {
-                  method: "POST",
-                  body: imageUrlsForm,
-               }
-            );
+            imagesForm.append("folderPath", "/profile-pictures");
+            const imagesDataResponse = await fetch("/api/upload-images", {
+               method: "POST",
+               body: imagesForm,
+            });
 
-            const imageUrls = await imageUrlsResponse.json();
+            const imagesData = await imagesDataResponse.json();
 
-            if (imageUrls.error) {
-               toast.error(imageUrls.error, {
+            if (imagesData.error) {
+               toast.error(imagesData.error, {
                   style: {
                      background: "#CF3434",
                   },
@@ -94,7 +91,7 @@ const AdminUserForm = ({
                      username: currentUser?.username,
                      email: currentUser?.email,
                      password: currentUser?.password,
-                     imageUrls: imageUrls,
+                     imagesData: imagesData,
                      userId,
                   }),
                }

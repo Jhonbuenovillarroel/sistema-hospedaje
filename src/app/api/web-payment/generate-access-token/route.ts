@@ -29,9 +29,9 @@ export async function GET(req: NextRequest) {
 
          return NextResponse.json({ sessionKey: response.data, accessToken });
       } catch (error) {
-         console.error(error);
+         return NextResponse.json({ error }, { status: 500 });
       }
    } catch (error) {
-      console.error(error);
+      return NextResponse.json({ error }, { status: 500 });
    }
 }

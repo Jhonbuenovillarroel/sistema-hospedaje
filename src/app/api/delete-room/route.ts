@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { deleteMultipleFiles } from "@/utils/functions";
 import fs from "fs";
 import path from "path";
+import cloudinary from "@/lib/cloudinary/cloudinary";
 
 export async function POST(req: NextRequest) {
    const body = await req.json();
@@ -12,7 +13,7 @@ export async function POST(req: NextRequest) {
    try {
       for (let i = 0; i < rooms.length; i++) {
          if (rooms[i].id === body.id) {
-            deleteMultipleFiles(body.imageUrls, fs, path);
+            deleteMultipleFiles(body.imageUrls, cloudinary);
          }
       }
       const deletedImages = await prisma.image.deleteMany({

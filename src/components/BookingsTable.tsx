@@ -18,7 +18,6 @@ interface Props {
 }
 
 const BookingsTable = ({ bookings }: Props) => {
-   // const [bookings, setBookings] = useState([]);
    const [addBooking, setAddBooking] = useState<boolean>(false);
    const [showBookingDetailsPopup, setShowBookingDetailsPopup] =
       useState<boolean>(false);

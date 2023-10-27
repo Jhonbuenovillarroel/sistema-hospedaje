@@ -10,7 +10,8 @@ import Swal from "sweetalert2";
 interface Props {
    username: string;
    email: string;
-   image: string;
+   imageUrl: string;
+   imageName: string;
    setPopupTransform: Function;
    popupTransform: string;
    showAdminUserDetailsPopup: boolean;
@@ -27,7 +28,8 @@ interface Props {
 const AdminUserDetailsPopup = ({
    username,
    email,
-   image,
+   imageUrl,
+   imageName,
    popupTransform,
    setPopupTransform,
    showAdminUserDetailsPopup,
@@ -69,7 +71,7 @@ const AdminUserDetailsPopup = ({
             <p className="font-bold text-lg">Foto:</p>
             <Image
                className="w-24 rounded-full"
-               src={image}
+               src={imageUrl}
                width={800}
                height={800}
                alt={`Foto de perfil del usuario ${username}`}
@@ -115,7 +117,7 @@ const AdminUserDetailsPopup = ({
                            return;
                         }
 
-                        const result = await eliminarUsuario(id, image);
+                        const result = await eliminarUsuario(id, imageUrl);
 
                         if (result.error) {
                            Swal.fire({
@@ -135,7 +137,7 @@ const AdminUserDetailsPopup = ({
                                     "Content-Type": "application/json",
                                  },
                                  body: JSON.stringify({
-                                    imageUrls: [image],
+                                    imageNames: [imageName],
                                  }),
                               }
                            );

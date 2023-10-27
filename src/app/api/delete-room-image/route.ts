@@ -3,6 +3,7 @@ import { deleteFile } from "@/utils/functions";
 import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import cloudinary from "@/lib/cloudinary/cloudinary";
 
 export async function POST(req: NextRequest) {
    const body = await req.json();
@@ -10,7 +11,7 @@ export async function POST(req: NextRequest) {
    const { urlImage } = body;
 
    try {
-      deleteFile(urlImage, fs, path);
+      deleteFile(urlImage, cloudinary);
 
       const deletedImage = await prisma.image.deleteMany({
          where: {

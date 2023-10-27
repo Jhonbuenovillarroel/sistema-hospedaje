@@ -5,7 +5,8 @@ import { cookies } from "next/headers";
 export interface User {
    email: string;
    username: string;
-   image: string;
+   imageUrl: string;
+   imageName: string;
    id: string;
    password: string;
 }

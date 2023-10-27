@@ -4,29 +4,30 @@ import bcrypt from "bcryptjs";
 import path from "path";
 import fs from "fs";
 import { deleteFile } from "@/utils/functions";
+import cloudinary from "@/lib/cloudinary/cloudinary";
 
 export async function POST(req: NextRequest) {
    const body = await req.json();
 
-   const { username, email, password, imageUrls, userId } = body;
+   const { username, email, password, imagesData, userId } = body;
 
    console.log(password);
 
    const users = await prisma.user.findMany();
 
-   if (imageUrls.length === 0) {
+   if (imagesData.length === 0) {
       for (let i = 0; i < users.length; i++) {
          if (users[i].id === userId) {
-            if (users[i].image) {
-               imageUrls.push(users[i].image);
+            if (users[i].imageUrl && users[i].imageName) {
+               imagesData.push([users[i].imageUrl, users[i].imageName]);
             }
          }
       }
    } else {
       for (let i = 0; i < users.length; i++) {
          if (users[i].id === userId) {
-            if (users[i].image) {
-               deleteFile(users[i].image, fs, path);
+            if (users[i].imageUrl && users[i].imageName) {
+               deleteFile(users[i].imageName, cloudinary);
             }
          }
       }
@@ -43,7 +44,8 @@ export async function POST(req: NextRequest) {
             username: username,
             email: email,
             password: passwordHashed,
-            image: imageUrls[0],
+            imageUrl: imagesData[0].imageUrl,
+            imageName: imagesData[0].imageName,
          },
       });
       return NextResponse.json({ user: editedUser });
@@ -55,7 +57,8 @@ export async function POST(req: NextRequest) {
          data: {
             username,
             email,
-            image: imageUrls[0],
+            imageUrl: imagesData[0].imageUrl,
+            imageName: imagesData[0].imageName,
          },
       });
       return NextResponse.json({ user: editedUser });

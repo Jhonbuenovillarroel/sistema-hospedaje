@@ -6,16 +6,17 @@ import { Booking } from "@/app/panel-administracion/reservas/page";
 import { useState } from "react";
 import AdminUserDetailsPopup from "./AdminUserDetailsPopup";
 import { User } from "@/app/panel-administracion/usuarios/page";
+import { eliminarUsuario } from "@/actions/delete-user-admin";
 
 interface Props {
    username: string;
    email: string;
-   image: string;
+   imageUrl: string;
+   imageName: string;
    id: string;
    setUserId: Function;
    setEdit: Function;
    setShowUserForm: Function;
-   eliminarUsuario: Function;
    users: User[];
    setCurrentUser: Function;
 }
@@ -23,12 +24,12 @@ interface Props {
 const AdminUserCard = ({
    username,
    email,
-   image,
+   imageUrl,
+   imageName,
    id,
    setUserId,
    setEdit,
    setShowUserForm,
-   eliminarUsuario,
    users,
    setCurrentUser,
 }: Props) => {
@@ -49,7 +50,8 @@ const AdminUserCard = ({
                setPopupTransform={setPopupTransform}
                username={username}
                email={email}
-               image={image}
+               imageUrl={imageUrl}
+               imageName={imageName}
                id={id}
                setUserId={setUserId}
                setEdit={setEdit}
@@ -67,7 +69,9 @@ const AdminUserCard = ({
             <Image
                className="hidden sm:flex sm:items-center sm:justify-center rounded-full justify-self-center w-14 h-14 object-cover col-span-1"
                src={
-                  image ? image : "/profile-pictures/default-profile-photo.jpg"
+                  imageUrl
+                     ? imageUrl
+                     : "/profile-pictures/default-profile-photo.jpg"
                }
                width={100}
                height={100}
@@ -112,18 +116,18 @@ const AdminUserCard = ({
                               return;
                            }
 
-                           const result = await eliminarUsuario(id, image);
+                           const resultDeleted = await eliminarUsuario(id);
 
-                           if (result.error) {
+                           if (resultDeleted.error) {
                               Swal.fire({
-                                 title: result.error,
+                                 title: resultDeleted.error,
                                  color: "#fff",
                                  icon: "error",
                                  background: "#101010",
                                  confirmButtonText: "Ok",
                                  confirmButtonColor: "#CB993F",
                               });
-                           } else if (result.username) {
+                           } else if (resultDeleted.username) {
                               const responseDeleteImage = await fetch(
                                  "/api/delete-images",
                                  {
@@ -132,12 +136,12 @@ const AdminUserCard = ({
                                        "Content-Type": "application/json",
                                     },
                                     body: JSON.stringify({
-                                       imageUrls: [image],
+                                       imageNames: [imageName],
                                     }),
                                  }
                               );
                               Swal.fire({
-                                 title: `El usuario ${result.username} se eliminó correctamente`,
+                                 title: `El usuario ${resultDeleted.username} se eliminó correctamente`,
                                  color: "#fff",
                                  icon: "success",
                                  background: "#101010",

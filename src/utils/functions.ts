@@ -1,33 +1,10 @@
-export const deleteFile = (filePath: any, fs: any, path: any) => {
-   fs.unlink(path.join(process.cwd() + "/public" + filePath), (error: any) => {
-      if (error) {
-         console.log(`Error al eliminar el archivo: ${error}`);
-      } else {
-         console.log(
-            `El archivo ${path.join(
-               process.cwd() + "/public" + filePath
-            )} ha sido eliminado con éxito`
-         );
-      }
-   });
+export const deleteFile = async (imageName: any, cloudinary: any) => {
+   await cloudinary.uploader.destroy(imageName);
 };
 
-export const deleteMultipleFiles = (imageUrls: any, fs: any, path: any) => {
-   for (let i = 0; i < imageUrls.length; i++) {
-      fs.unlink(
-         path.join(process.cwd() + "/public" + imageUrls[i]),
-         (error: any) => {
-            if (error) {
-               console.log(`Error al eliminar el archivo: ${error}`);
-            } else {
-               console.log(
-                  `El archivo ${path.join(
-                     process.cwd() + "/public" + imageUrls[i]
-                  )} ha sido eliminado con éxito`
-               );
-            }
-         }
-      );
+export const deleteMultipleFiles = async (imageNames: any, cloudinary: any) => {
+   for (let i = 0; i < imageNames.length; i++) {
+      await cloudinary.uploader.destroy(imageNames[i]);
    }
 };
 

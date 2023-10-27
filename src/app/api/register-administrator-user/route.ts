@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 export async function POST(req: NextRequest) {
    const body = await req.json();
 
-   const { username, email, password, imageUrls, userId } = body;
+   const { username, email, password, imagesData, userId } = body;
 
    const users = await prisma.user.findMany();
 
@@ -36,7 +36,8 @@ export async function POST(req: NextRequest) {
          username: username,
          email: email,
          password: passwordHashed,
-         image: imageUrls[0],
+         imageUrl: imagesData[0].imageUrl,
+         imageName: imagesData[0].imageName,
       },
    });
 

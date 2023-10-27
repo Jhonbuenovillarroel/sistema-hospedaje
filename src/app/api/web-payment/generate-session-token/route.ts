@@ -23,6 +23,6 @@ export async function POST(request: NextRequest) {
 
       return NextResponse.json({ sessionKey: response.data });
    } catch (error) {
-      console.error(error);
+      return NextResponse.json({ error }, { status: 500 });
    }
 }

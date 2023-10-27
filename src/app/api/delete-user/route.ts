@@ -10,12 +10,6 @@ export async function POST(req: NextRequest) {
    try {
       const users = await prisma.user.findMany();
 
-      for (let i = 0; i < users.length; i++) {
-         if (users[i].id === body.id) {
-            deleteFile(body.urlImage, fs, path);
-         }
-      }
-
       const userDeleted = await prisma.user.delete({
          where: {
             id: body.id,

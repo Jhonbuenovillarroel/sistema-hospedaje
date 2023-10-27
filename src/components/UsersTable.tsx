@@ -7,7 +7,6 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { FaUserPlus } from "react-icons/fa6";
 import Swal from "sweetalert2";
-import { eliminarUsuario } from "@/actions/delete-admin-user";
 
 interface Props {
    users: User[];
@@ -20,7 +19,8 @@ const UsersTable = ({ users }: Props) => {
    const [currentUser, setCurrentUser] = useState<User>({
       username: "",
       email: "",
-      image: "",
+      imageUrl: "",
+      imageName: "",
       id: "",
       password: "",
    });
@@ -45,7 +45,8 @@ const UsersTable = ({ users }: Props) => {
                         setCurrentUser({
                            username: "",
                            email: "",
-                           image: "",
+                           imageUrl: "",
+                           imageName: "",
                            id: "",
                            password: "",
                         });
@@ -77,12 +78,12 @@ const UsersTable = ({ users }: Props) => {
                            users={users}
                            username={element.username}
                            email={element.email}
-                           image={element.image}
+                           imageUrl={element.imageUrl}
+                           imageName={element.imageName}
                            id={element.id}
                            setUserId={setUserId}
                            setEdit={setEdit}
                            setShowUserForm={setShowUserForm}
-                           eliminarUsuario={eliminarUsuario}
                         />
                      ))}
                </div>

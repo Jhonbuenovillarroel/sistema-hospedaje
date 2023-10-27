@@ -42,7 +42,7 @@ export const authOptions: NextAuthOptions = {
                      id: user.id,
                      name: user.username,
                      email: user.email,
-                     image: user.image,
+                     image: user.imageUrl,
                   };
                } else {
                   throw new Error("Contraseña incorrecta");

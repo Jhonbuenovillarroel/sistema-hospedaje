@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
       users.push({
          username: usersDatabase[i].username,
          email: usersDatabase[i].email,
-         image: usersDatabase[i].image,
+         image: usersDatabase[i].imageName,
          id: usersDatabase[i].id,
       });
    }
