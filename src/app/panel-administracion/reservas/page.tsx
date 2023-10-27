@@ -24,11 +24,9 @@ export default async function Reservas() {
 
    const cookieStore = cookies();
 
-   console.log(cookieStore.getAll());
-
    return (
       <>
-         <BookingsTable cookies={cookieStore.getAll()} bookings={bookings} />
+         <BookingsTable bookings={bookings} />
       </>
    );
 }
