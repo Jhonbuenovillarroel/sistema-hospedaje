@@ -1,10 +1,10 @@
-import { Image } from "@prisma/client";
 import React, { ChangeEvent, FormEvent, use, useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
 import { User } from "@/app/panel-administracion/usuarios/page";
 import { POST } from "@/app/api/get-available-rooms/route";
+import Image from "next/image";
 
 interface Props {
    setShowUserForm: Function;
@@ -61,79 +61,76 @@ const AdminUserForm = ({
             imagesForm.append("folderPath", "/profile-pictures");
             const imagesDataResponse = await fetch("/api/upload-images", {
                method: "POST",
-               headers: {
-                  Allow: "POST",
-               },
                body: imagesForm,
             });
 
             const imagesData = await imagesDataResponse.json();
 
-            // if (imagesData.error) {
-            //    toast.error(imagesData.error, {
-            //       style: {
-            //          background: "#CF3434",
-            //       },
-            //       iconTheme: {
-            //          primary: "#CA5353",
-            //          secondary: "#fff",
-            //       },
-            //    });
-            //    setTimeout(() => {
-            //       setLoading(false);
-            //    }, 2000);
-            //    return;
-            // }
+            if (imagesData.error) {
+               toast.error(imagesData.error, {
+                  style: {
+                     background: "#CF3434",
+                  },
+                  iconTheme: {
+                     primary: "#CA5353",
+                     secondary: "#fff",
+                  },
+               });
+               setTimeout(() => {
+                  setLoading(false);
+               }, 2000);
+               return;
+            }
 
-            // const response = await fetch(
-            //    edit
-            //       ? "/api/edit-administrator-user"
-            //       : "/api/register-administrator-user",
-            //    {
-            //       method: "POST",
-            //       body: JSON.stringify({
-            //          username: currentUser?.username,
-            //          email: currentUser?.email,
-            //          password: currentUser?.password,
-            //          imagesData: imagesData,
-            //          userId,
-            //       }),
-            //    }
-            // );
+            const response = await fetch(
+               edit
+                  ? "/api/edit-administrator-user"
+                  : "/api/register-administrator-user",
+               {
+                  method: "POST",
+                  body: JSON.stringify({
+                     username: currentUser?.username,
+                     email: currentUser?.email,
+                     password: currentUser?.password,
+                     imagesData: imagesData,
+                     userId,
+                  }),
+               }
+            );
 
-            // const result = await response.json();
+            const result = await response.json();
 
-            // if (result.error) {
-            //    toast.error(result.error, {
-            //       style: {
-            //          background: "#CF3434",
-            //       },
-            //       iconTheme: {
-            //          primary: "#CA5353",
-            //          secondary: "#fff",
-            //       },
-            //    });
-            //    setTimeout(() => {
-            //       setLoading(false);
-            //    }, 2000);
-            // }
-            // if (result.user) {
-            //    toast.success(
-            //       edit
-            //          ? "Se guardaron los cambios"
-            //          : "Usuario agregado correctamente",
-            //       {
-            //          style: {
-            //             color: "#000",
-            //          },
-            //       }
-            //    );
+            if (result.error) {
+               toast.error(result.error, {
+                  style: {
+                     background: "#CF3434",
+                  },
+                  iconTheme: {
+                     primary: "#CA5353",
+                     secondary: "#fff",
+                  },
+               });
+               setTimeout(() => {
+                  setLoading(false);
+               }, 2000);
+            }
+            if (result.user) {
+               toast.success(
+                  edit
+                     ? "Se guardaron los cambios"
+                     : "Usuario agregado correctamente",
+                  {
+                     style: {
+                        color: "#000",
+                     },
+                  }
+               );
 
-            //    setTimeout(() => {
-            //       setShowUserForm(false);
-            //       setLoading(false);
-            //    }, 2000);
-            // }
+               setTimeout(() => {
+                  setShowUserForm(false);
+                  setLoading(false);
+               }, 2000);
+            }
          }}
          className="flex max-w-[400px] w-full flex-col gap-4 bg-zinc-900 rounded-md py-8 px-8 items-center justify-center"
       >
@@ -213,6 +210,15 @@ const AdminUserForm = ({
                className="bg-zinc-800 rounded-sm outline-none px-3 py-1"
             />
          </div>
+
+         {images && images[0] && (
+            <Image
+               src={URL.createObjectURL(images[0])}
+               width={800}
+               height={800}
+               alt="imagen a subir"
+            />
+         )}
 
          <div className="flex w-full flex-col gap-4 mt-6">
             <button

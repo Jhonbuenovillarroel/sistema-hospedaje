@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { writeFile } from "fs/promises";
 import path from "path";
-import fs from "fs";
+// import fs from "fs";
 import cloudinary from "@/lib/cloudinary/cloudinary";
 
 const processImage = async (image: any, folderPath: any) => {
@@ -9,16 +9,14 @@ const processImage = async (image: any, folderPath: any) => {
    const buffer = Buffer.from(bytes);
    const filePath = path.join(process.cwd(), `public${folderPath}`, image.name);
 
-   console.log(buffer);
-
-   // writeFile(filePath, buffer);
+   writeFile(filePath, buffer);
 
    return `${folderPath}/${image.name}`;
 };
 
 const uploadImage = async (folderPath: any) => {
    const filePath = path.join(process.cwd(), `public${folderPath}`);
-   const res = await cloudinary.uploader.upload(filePath);
+   const res = await cloudinary.uploader.upload(folderPath);
 
    console.log(res);
 
@@ -49,7 +47,7 @@ export async function POST(req: NextRequest) {
                images[i],
                form.get("folderPath")
             );
-            // const res = await uploadImage(filePath);
+            const res = await uploadImage(filePath);
 
             // Eliminar la imagen
             // fs.unlink(
@@ -67,7 +65,7 @@ export async function POST(req: NextRequest) {
             //    }
             // );
 
-            // urls.push({ imageUrl: res.secure_url, imageName: res.public_id });
+            urls.push({ imageUrl: res.secure_url, imageName: res.public_id });
          }
          return NextResponse.json([]);
       } else {
