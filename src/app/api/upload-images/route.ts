@@ -1,24 +1,30 @@
 import { NextRequest, NextResponse } from "next/server";
 import { writeFile } from "fs/promises";
 import path from "path";
-// import fs from "fs";
 import cloudinary from "@/lib/cloudinary/cloudinary";
 
 const processImage = async (image: any, folderPath: any) => {
    const bytes = await image.arrayBuffer();
    const buffer = Buffer.from(bytes);
-   const filePath = path.join(process.cwd(), `public${folderPath}`, image.name);
 
-   writeFile(filePath, buffer);
+   const response = await new Promise((resolve, reject) => {
+      cloudinary.uploader
+         .upload_stream({}, (err, res) => {
+            if (err) {
+               reject(err);
+            } else {
+               resolve(res);
+            }
+         })
+         .end(buffer);
+   });
 
-   return `${folderPath}/${image.name}`;
+   return response;
 };
 
 const uploadImage = async (folderPath: any) => {
    const filePath = path.join(process.cwd(), `public${folderPath}`);
-   const res = await cloudinary.uploader.upload(folderPath);
-
-   console.log(res);
+   const res = await cloudinary.uploader.upload(filePath);
 
    return res;
 };
@@ -43,31 +49,14 @@ export async function POST(req: NextRequest) {
          let urls = [];
 
          for (let i = 0; i < images.length; i++) {
-            const filePath = await processImage(
+            const res: any = await processImage(
                images[i],
                form.get("folderPath")
             );
-            const res = await uploadImage(filePath);
-
-            // Eliminar la imagen
-            // fs.unlink(
-            //    path.join(process.cwd() + "/public" + filePath),
-            //    (error: any) => {
-            //       if (error) {
-            //          console.log(`Error al eliminar el archivo: ${error}`);
-            //       } else {
-            //          console.log(
-            //             `El archivo ${path.join(
-            //                process.cwd() + "/public" + filePath
-            //             )} ha sido eliminado con éxito`
-            //          );
-            //       }
-            //    }
-            // );
 
             urls.push({ imageUrl: res.secure_url, imageName: res.public_id });
          }
-         return NextResponse.json([]);
+         return NextResponse.json(urls);
       } else {
          return NextResponse.json([]);
       }

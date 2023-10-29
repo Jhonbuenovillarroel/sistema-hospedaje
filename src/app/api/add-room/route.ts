@@ -6,7 +6,9 @@ export async function POST(req: NextRequest) {
 
    const {
       name,
-      description,
+      target,
+      descriptionTitle,
+      descriptionContent,
       roomNumber,
       adults,
       children,
@@ -22,15 +24,21 @@ export async function POST(req: NextRequest) {
    for (let i = 0; i < body.amenities.length; i++) {
       amenities.push({ name: body.amenities[i] });
    }
+
    for (let i = 0; i < body.images.length; i++) {
-      images.push({ url: body.images[i] });
+      images.push({
+         url: body.images[i].imageUrl,
+         name: body.images[i].imageName,
+      });
    }
 
    try {
       const newRoom = await prisma.room.create({
          data: {
             name,
-            description,
+            target,
+            descriptionTitle,
+            descriptionContent,
             roomNumber: parseInt(roomNumber),
             adults: parseInt(adults),
             children: parseInt(children),

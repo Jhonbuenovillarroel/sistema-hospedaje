@@ -7,7 +7,9 @@ export async function POST(req: NextRequest) {
    const {
       id,
       name,
-      description,
+      target,
+      descriptionTitle,
+      descriptionContent,
       roomNumber,
       adults,
       children,
@@ -23,8 +25,13 @@ export async function POST(req: NextRequest) {
    for (let i = 0; i < body.amenities.length; i++) {
       amenities.push({ name: body.amenities[i] });
    }
+
+   console.log(body.images);
    for (let i = 0; i < body.images.length; i++) {
-      images.push({ url: body.images[i] });
+      images.push({
+         url: body.images[i].imageUrl,
+         name: body.images[i].imageName,
+      });
    }
 
    try {
@@ -40,7 +47,9 @@ export async function POST(req: NextRequest) {
          },
          data: {
             name,
-            description,
+            target,
+            descriptionTitle,
+            descriptionContent,
             roomNumber: parseInt(roomNumber),
             adults: parseInt(adults),
             children: parseInt(children),

@@ -13,7 +13,7 @@ interface Props {
    name: string;
    roomNumber: number;
    price: number;
-   images: string[];
+   imageUrls: string[];
    id: string;
    popupTransform: string;
    deleteRoom: Function;
@@ -30,7 +30,7 @@ const RoomDetailsPopup = ({
    roomNumber,
    price,
    id,
-   images,
+   imageUrls,
    popupTransform,
    deleteRoom,
    setAddRoom,
@@ -71,8 +71,8 @@ const RoomDetailsPopup = ({
          </div>
          <div className="lg:col-span-3  lg:flex justify-center items-center">
             <Gallery width="max-w-[220px]" sizeArrow="4" displacement={320}>
-               {images &&
-                  images.map((urlImage: string, i: number) => (
+               {imageUrls &&
+                  imageUrls.map((urlImage: string, i: number) => (
                      <Image
                         key={i}
                         className="h-fit w-full snap-center object-cover"
@@ -126,14 +126,11 @@ const RoomDetailsPopup = ({
                               showDenyButton: true,
                            }).then(async (result) => {
                               if (result.isConfirmed) {
-                                 await deleteRoom(id, images);
+                                 await deleteRoom(id);
                               }
                            });
                         } else {
-                           const resultDeleteRoom = await deleteRoom(
-                              room.id,
-                              room.images
-                           );
+                           const resultDeleteRoom = await deleteRoom(room.id);
 
                            if (resultDeleteRoom.error) {
                               Swal.fire({
@@ -153,7 +150,7 @@ const RoomDetailsPopup = ({
                                        "Content-Type": "application/json",
                                     },
                                     body: JSON.stringify({
-                                       imageUrls: room.images,
+                                       imageNames: room.imageNames,
                                     }),
                                  }
                               );

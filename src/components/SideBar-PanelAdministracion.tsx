@@ -47,8 +47,8 @@ export default function SideBarPanelAdministracion() {
          return;
       }
 
-      return result.image
-         ? result.image
+      return result.imageUrl
+         ? result.imageUrl
          : "/profile-pictures/default-profile-photo.jpg";
    };
 

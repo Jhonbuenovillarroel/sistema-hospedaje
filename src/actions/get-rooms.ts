@@ -2,10 +2,12 @@ import prisma from "@/lib/prisma/prisma";
 import { Room } from "@/app/panel-administracion/habitaciones/page";
 
 export const getRooms = async () => {
-   const rooms: any = await prisma.room.findMany();
+   const databaseRooms: any = await prisma.room.findMany();
 
    const databaseAmenities = await prisma.amenitie.findMany();
    const databaseImages = await prisma.image.findMany();
+
+   let rooms: any = databaseRooms;
 
    for (let i = 0; i < rooms.length; i++) {
       for (let j = 0; j < databaseAmenities.length; j++) {
@@ -19,10 +21,14 @@ export const getRooms = async () => {
 
       for (let k = 0; k < databaseImages.length; k++) {
          if (rooms[i].id === databaseImages[k].roomId) {
-            if (!rooms[i].images) {
-               rooms[i].images = [];
+            if (!rooms[i].imageUrls) {
+               rooms[i].imageUrls = [];
             }
-            rooms[i].images?.push(databaseImages[k].url);
+            if (!rooms[i].imageNames) {
+               rooms[i].imageNames = [];
+            }
+            rooms[i].imageUrls?.push(databaseImages[k].url);
+            rooms[i].imageNames?.push(databaseImages[k].name);
          }
       }
    }

@@ -59,7 +59,11 @@ export default function AvailableRoom({
                         <Image
                            key={i}
                            className="h-full w-full  snap-center object-cover"
-                           src={element}
+                           src={
+                              element
+                                 ? element
+                                 : "/fotos__hospedaje/default-image-room.png"
+                           }
                            width={350}
                            height={350}
                            alt={name}

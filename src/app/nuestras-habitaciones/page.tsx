@@ -1,6 +1,18 @@
 import Room from "@/components/Room";
+import { getRooms } from "@/actions/get-rooms";
+import { cookies } from "next/headers";
 
-export default function NuestrasHabitaciones() {
+// const getData = async () => {
+//    const rooms: any = await getRooms();
+
+//    return rooms;
+// };
+
+export default async function NuestrasHabitaciones() {
+   const rooms = await getRooms();
+
+   const cookieStore = cookies();
+
    return (
       <main>
          <section>
@@ -15,7 +27,24 @@ export default function NuestrasHabitaciones() {
             </div>
          </section>
          <section className="mt-16">
-            <Room
+            {rooms &&
+               rooms.map((room: any, i: number) => (
+                  <Room
+                     key={i}
+                     images={room.imageUrls}
+                     name={room.name}
+                     price={room.price}
+                     characteristics={[
+                        room.bed,
+                        `${room.adults} adultos y ${room.children} niños`,
+                        room.view,
+                        room.description,
+                     ]}
+                     href={`/detalles-habitacion?roomId=${room.id}`}
+                  />
+               ))}
+
+            {/* <Room
                images={[
                   "/fotos__hospedaje/303-1.jpg",
                   "/fotos__hospedaje/303-2.jpg",
@@ -29,76 +58,7 @@ export default function NuestrasHabitaciones() {
                   "Persona sola o pareja",
                ]}
                href="/habitacion-estandar"
-            />
-            <Room
-               images={["/fotos__hospedaje/401.jpg"]}
-               name="Habitacion Clásica Matrimonial"
-               price={80}
-               characteristics={[
-                  "Cama 2 plazas",
-                  "2 adultos y 1 niño",
-                  "Vista a la calle",
-                  "Parejas",
-               ]}
-               href="/habitacion-clasica-matrimonial"
-            />
-            <Room
-               images={[
-                  "/fotos__hospedaje/301-1.jpg",
-                  "/fotos__hospedaje/301-2.jpg",
-               ]}
-               name="Habitacion Elegante Matrimonial"
-               price={90}
-               characteristics={[
-                  "Cama 2 plazas",
-                  "2 adultos y 1 niño",
-                  "Vista a la calle",
-                  "Parejas",
-               ]}
-               href="/habitacion-elegante-matrimonial"
-            />
-            <Room
-               images={[
-                  "/fotos__hospedaje/201-1.jpg",
-                  "/fotos__hospedaje/201-2.jpg",
-               ]}
-               name="Habitacion Matrimonial Superior"
-               price={110}
-               characteristics={[
-                  "Cama Queen",
-                  "2 adultos y 1 niño",
-                  "Vista a la calle",
-                  "Parejas",
-               ]}
-               href="/habitacion-matrimonial-superior"
-            />
-            <Room
-               images={[
-                  "/fotos__hospedaje/304-1.jpg",
-                  "/fotos__hospedaje/304-2.jpg",
-               ]}
-               name="Habitacion Doble"
-               price={110}
-               characteristics={[
-                  "Cama 2 plazas",
-                  "4 adultos y 1 niño",
-                  "Habitación interior",
-                  "Familias o grupos de viaje",
-               ]}
-               href="/habitacion-doble"
-            />
-            <Room
-               images={["/fotos__hospedaje/404.jpg"]}
-               name="Habitacion Triple"
-               price={120}
-               characteristics={[
-                  "Cama 2 plazas y una de 1/2",
-                  "5 adultos y 1 niño",
-                  "Habitación interior",
-                  "Familias o grupos de viaje",
-               ]}
-               href="/habitacion-triple"
-            />
+            /> */}
          </section>
       </main>
    );

@@ -12,15 +12,6 @@ import Gallery from "./Gallery";
 import Image from "next/image";
 import BookForm from "./BookForm";
 import React, { useState } from "react";
-import RecommendedRoom from "./RecommendedRoom";
-
-type RecommendedRoom = {
-   href: string;
-   src: string;
-   name: string;
-   description: string;
-   price: number;
-};
 
 interface Props {
    name: string;
@@ -32,7 +23,6 @@ interface Props {
    amenities: string[];
    services: string[];
    urlImages: string[];
-   recommendedRooms: RecommendedRoom[];
    backgroundImage: string;
 }
 
@@ -46,7 +36,6 @@ export default function RoomDetails({
    amenities,
    services,
    urlImages,
-   recommendedRooms,
    backgroundImage,
 }: Props) {
    const [showBookForm, setShowBookForm] = useState(false);
@@ -63,7 +52,10 @@ export default function RoomDetails({
       <>
          <section className="h-full w-full">
             <div
-               className={`h-[400px] sm:h-[500px] relative w-full flex flex-col items-center justify-center ${backgroundImage} bg-center bg-no-repeat bg-cover before:content-[''] before:absolute before:top-0 before:right-0 before:bottom-0 before:left-0 before:bg-[rgba(0,0,0,0.5)]`}
+               style={{
+                  background: `url('${backgroundImage}')`,
+               }}
+               className={`h-[400px] sm:h-[500px] relative w-full flex flex-col items-center justify-center  bg-center bg-no-repeat bg-cover before:content-[''] before:absolute before:top-0 before:right-0 before:bottom-0 before:left-0 before:bg-[rgba(0,0,0,0.5)]`}
             >
                <div className="z-10 flex flex-col items-center justify-center">
                   <h1 className="text-center text-4xl md:text-5xl max-w-[280px] md:max-w-[700px] font-bold">
@@ -186,31 +178,6 @@ export default function RoomDetails({
                      />
                   ))}
             </Gallery>
-         </section>
-         <section className="my-20">
-            <div>
-               <div className="flex flex-col items-center justify-center">
-                  <h3 className="text-4xl text-center font-bold">
-                     Otras Habitaciones
-                  </h3>
-                  <p className="text-center max-w-[240px] mt-3">
-                     También podrían ser de tu interés
-                  </p>
-               </div>
-               <div className="mt-16 h-full px-8 flex flex-col items-center justify-center md:flex-row md:items-start gap-16 md:gap-8">
-                  {recommendedRooms &&
-                     recommendedRooms.map((element, i) => (
-                        <RecommendedRoom
-                           key={i}
-                           href={element.href}
-                           src={element.src}
-                           name={element.name}
-                           description={element.description}
-                           price={element.price}
-                        />
-                     ))}
-               </div>
-            </div>
          </section>
       </>
    );

@@ -7,14 +7,17 @@ export interface Room {
    bed: string;
    category: string;
    children: number;
-   description: string;
+   target: string;
+   descriptionTitle: string;
+   descriptionContent: string;
    id: string;
    name: string;
    price: number;
    roomNumber: number;
    view: string;
    amenities: string[];
-   images: string[];
+   imageUrls: string[];
+   imageNames: string[];
 }
 
 export default async function Habitaciones() {

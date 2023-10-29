@@ -87,25 +87,25 @@ const RoomForm = ({
                      const formData = new FormData(e.currentTarget);
                      formData.delete("images");
 
-                     const imageUrlForm = new FormData();
+                     const imagesForm = new FormData();
 
                      for (let i = 0; i < images.length; i++) {
-                        imageUrlForm.append(`image${i + 1}`, images[i]);
+                        imagesForm.append(`image${i + 1}`, images[i]);
                      }
-                     imageUrlForm.append("folderPath", "/fotos__hospedaje");
+                     imagesForm.append("folderPath", "/fotos__hospedaje");
 
-                     const imageUrlsResponse = await fetch(
+                     const imagesDataResponse = await fetch(
                         "/api/upload-images",
                         {
                            method: "POST",
-                           body: imageUrlForm,
+                           body: imagesForm,
                         }
                      );
 
-                     const imageUrls = await imageUrlsResponse.json();
+                     const imagesData = await imagesDataResponse.json();
 
-                     if (imageUrls.error) {
-                        toast.error(imageUrls.error, {
+                     if (imagesData.error) {
+                        toast.error(imagesData.error, {
                            style: {
                               background: "#CF3434",
                            },
@@ -137,7 +137,11 @@ const RoomForm = ({
                               body: JSON.stringify({
                                  id: currentRoom.id,
                                  name: formData.get("name"),
-                                 description: formData.get("description"),
+                                 target: formData.get("target"),
+                                 descriptionTitle:
+                                    formData.get("descriptionTitle"),
+                                 descriptionContent:
+                                    formData.get("descriptionContent"),
                                  roomNumber: formData.get("roomNumber"),
                                  adults: formData.get("adults"),
                                  children: formData.get("children"),
@@ -146,7 +150,7 @@ const RoomForm = ({
                                  bed: formData.get("bed"),
                                  category: formData.get("category"),
                                  price: formData.get("price"),
-                                 images: imageUrls,
+                                 images: imagesData,
                               }),
                            }
                         );
@@ -154,7 +158,7 @@ const RoomForm = ({
                         const updatedRoom = await updatedRoomResponse.json();
 
                         if (updatedRoom.error) {
-                           toast.error(imageUrls.error, {
+                           toast.error(updatedRoom.error, {
                               style: {
                                  background: "#CF3434",
                               },
@@ -189,7 +193,11 @@ const RoomForm = ({
                            },
                            body: JSON.stringify({
                               name: formData.get("name"),
-                              description: formData.get("description"),
+                              target: formData.get("target"),
+                              descriptionTitle:
+                                 formData.get("descriptionTitle"),
+                              descriptionContent:
+                                 formData.get("descriptionContent"),
                               roomNumber: formData.get("roomNumber"),
                               adults: formData.get("adults"),
                               children: formData.get("children"),
@@ -198,14 +206,14 @@ const RoomForm = ({
                               bed: formData.get("bed"),
                               category: formData.get("category"),
                               price: formData.get("price"),
-                              images: imageUrls,
+                              images: imagesData,
                            }),
                         });
 
                         const newRoom = await newRoomResponse.json();
 
                         if (newRoom.error) {
-                           toast.error(imageUrls.error, {
+                           toast.error(newRoom.error, {
                               style: {
                                  background: "#CF3434",
                               },
@@ -251,21 +259,64 @@ const RoomForm = ({
                   </div>
 
                   <div className="flex flex-col w-full gap-1">
-                     <label htmlFor="description">Descripción:</label>
+                     <label htmlFor="target">Público Objetivo:</label>
                      <input
                         onChange={(e: ChangeEvent<HTMLInputElement>) => {
                            setCurrentRoom({
                               ...currentRoom,
-                              description: e.currentTarget.value,
+                              target: e.currentTarget.value,
                            });
                         }}
-                        value={currentRoom.description}
+                        value={currentRoom.target}
                         required
                         className="outline-none bg-zinc-800 rounded-sm h-9 px-3"
                         type="text"
-                        name="description"
-                        id="description"
+                        name="target"
+                        id="target"
                      />
+                  </div>
+
+                  <div className="flex flex-col w-full gap-1">
+                     <label htmlFor="descriptionTitle">
+                        Descripción (Titulo):
+                     </label>
+                     <input
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                           setCurrentRoom({
+                              ...currentRoom,
+                              descriptionTitle: e.currentTarget.value,
+                           });
+                        }}
+                        value={currentRoom.descriptionTitle}
+                        required
+                        className="outline-none bg-zinc-800 rounded-sm h-9 px-3"
+                        type="text"
+                        name="descriptionTitle"
+                        id="descriptionTitle"
+                     />
+                  </div>
+
+                  <div className="flex flex-col w-full gap-1">
+                     <label htmlFor="descriptionContent">
+                        Descripción (Contenido):
+                     </label>
+
+                     <textarea
+                        onChange={(e: ChangeEvent<HTMLTextAreaElement>) => {
+                           setCurrentRoom({
+                              ...currentRoom,
+                              descriptionContent: e.currentTarget.value,
+                           });
+
+                           console.log(e.currentTarget.value.length);
+                        }}
+                        value={currentRoom.descriptionContent}
+                        required
+                        className="outline-none bg-zinc-800 rounded-sm h-auto px-3"
+                        rows={12}
+                        name="descriptionContent"
+                        id="descriptionContent"
+                     ></textarea>
                   </div>
 
                   <div className="flex flex-col w-full gap-1">
@@ -368,7 +419,7 @@ const RoomForm = ({
                                           amenities: newArray,
                                        });
                                     }}
-                                    value={element}
+                                    value={element ? element : ""}
                                     required
                                     className="outline-none bg-zinc-800 rounded-sm h-9 px-3"
                                     type="text"
@@ -495,9 +546,21 @@ const RoomForm = ({
                      />
                   </div>
 
+                  {images &&
+                     images[0] &&
+                     images.map((image, i) => (
+                        <Image
+                           key={i}
+                           src={URL.createObjectURL(image)}
+                           width={800}
+                           height={800}
+                           alt="imagen a subir"
+                        />
+                     ))}
+
                   <div className="flex relative gap-8 flex-wrap items-center justify-center">
-                     {currentRoom.images ? (
-                        currentRoom.images.map((element: any, i: any) => (
+                     {currentRoom.imageUrls ? (
+                        currentRoom.imageUrls.map((element: any, i: any) => (
                            <div key={i} className="max-w-[288px] relative">
                               <div
                                  onClick={async () => {
@@ -513,7 +576,9 @@ const RoomForm = ({
                                        denyButtonColor: "#303030",
                                     }).then(async (res) => {
                                        if (res.isConfirmed) {
-                                          if (currentRoom.images.length === 1) {
+                                          if (
+                                             currentRoom.imageUrls.length === 1
+                                          ) {
                                              Swal.fire({
                                                 title: "No puede eliminar esta imagen",
                                                 text: "Cada habitación tiene que tener por lo menos una imagen",
@@ -534,7 +599,7 @@ const RoomForm = ({
                                                       "application/json",
                                                 },
                                                 body: JSON.stringify({
-                                                   urlImage: element,
+                                                   url: element,
                                                 }),
                                              }
                                           );

@@ -26,14 +26,17 @@ const RoomsTable = ({ rooms }: Props) => {
       bed: "",
       category: "",
       children: 0,
-      description: "",
+      target: "",
+      descriptionTitle: "",
+      descriptionContent: "",
       id: "",
       name: "",
       price: 0,
       roomNumber: 0,
       view: "",
       amenities: [],
-      images: [],
+      imageUrls: [],
+      imageNames: [],
    });
    const [edit, setEdit] = useState<boolean>(false);
    const [showRoomDetailsPopup, setShowRoomDetailsPopup] =
@@ -96,7 +99,7 @@ const RoomsTable = ({ rooms }: Props) => {
                                     roomNumber={room.roomNumber}
                                     price={room.price}
                                     id={room.id}
-                                    images={room.images}
+                                    imageUrls={room.imageUrls}
                                     deleteRoom={deleteRoom}
                                     setAddRoom={setAddRoom}
                                     setEdit={setEdit}
@@ -119,12 +122,16 @@ const RoomsTable = ({ rooms }: Props) => {
                                     width="max-w-[220px]"
                                     displacement={320}
                                  >
-                                    {room.images &&
-                                       room.images.map((urlImage, i) => (
+                                    {room.imageUrls &&
+                                       room.imageUrls.map((urlImage, i) => (
                                           <Image
                                              key={i}
                                              className="h-fit w-full snap-center object-cover"
-                                             src={urlImage}
+                                             src={
+                                                urlImage
+                                                   ? urlImage
+                                                   : "/fotos__hospedaje/default-image-room.png"
+                                             }
                                              width={350}
                                              height={350}
                                              alt={room.name}
@@ -191,10 +198,7 @@ const RoomsTable = ({ rooms }: Props) => {
                                                    showDenyButton: true,
                                                 }).then(async (result) => {
                                                    const resultDeleteRoom =
-                                                      await deleteRoom(
-                                                         room.id,
-                                                         room.images
-                                                      );
+                                                      await deleteRoom(room.id);
 
                                                    if (resultDeleteRoom.error) {
                                                       Swal.fire({
@@ -221,8 +225,8 @@ const RoomsTable = ({ rooms }: Props) => {
                                                                },
                                                                body: JSON.stringify(
                                                                   {
-                                                                     imageUrls:
-                                                                        room.images,
+                                                                     imageNames:
+                                                                        room.imageNames,
                                                                   }
                                                                ),
                                                             }
@@ -241,10 +245,7 @@ const RoomsTable = ({ rooms }: Props) => {
                                                 });
                                              } else {
                                                 const resultDeleteRoom =
-                                                   await deleteRoom(
-                                                      room.id,
-                                                      room.images
-                                                   );
+                                                   await deleteRoom(room.id);
 
                                                 if (resultDeleteRoom.error) {
                                                    Swal.fire({
@@ -270,8 +271,8 @@ const RoomsTable = ({ rooms }: Props) => {
                                                             },
                                                             body: JSON.stringify(
                                                                {
-                                                                  imageUrls:
-                                                                     room.images,
+                                                                  imageNames:
+                                                                     room.imageNames,
                                                                }
                                                             ),
                                                          }

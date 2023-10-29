@@ -9,9 +9,7 @@ export async function POST(req: NextRequest) {
 
    const { imageNames } = body;
 
-   for (let i = 0; i < imageNames.length; i++) {
-      await deleteMultipleFiles(imageNames[i], cloudinary);
-   }
+   await deleteMultipleFiles(imageNames, cloudinary);
 
    return NextResponse.json({});
 }

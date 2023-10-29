@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
-export const deleteRoom = async (id: any, imageUrls: any) => {
+export const deleteRoom = async (id: any) => {
    const rooms = await prisma.room.findMany();
 
    try {

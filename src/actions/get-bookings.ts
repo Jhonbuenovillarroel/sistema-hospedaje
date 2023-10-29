@@ -23,7 +23,5 @@ export const obtenerReservas = async () => {
 
    const orderedBookings = sortBookings(bookings);
 
-   console.log(orderedBookings);
-
    return orderedBookings;
 };

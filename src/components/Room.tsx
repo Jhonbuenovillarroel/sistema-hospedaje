@@ -31,7 +31,11 @@ export default function Room({
                      <Image
                         key={i}
                         className="h-full object-cover snap-center w-full"
-                        src={element}
+                        src={
+                           element
+                              ? element
+                              : "/fotos__hospedaje/default-image-room.png"
+                        }
                         width={800}
                         height={800}
                         alt={name}

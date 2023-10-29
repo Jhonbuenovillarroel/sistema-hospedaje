@@ -62,7 +62,8 @@ model Amenitie {
 
 model Image {
   id            String    @id @default(cuid())
-  url           String
+  url           String?   @unique
+  name          String?   @unique
   roomId        String
   room          Room      @relation(fields: [roomId], references: [id])
 }
@@ -84,19 +85,21 @@ model Booking {
 }
 
 model Room {
-  id            String    @id @default(cuid())
-  name          String
-  roomNumber    Int       @unique
-  description   String
-  adults        Int
-  children      Int
-  amenities     Amenitie[]
-  view          String
-  bed           String
-  category      String
-  price         Int
-  images        Image[]
-  bookings      Booking[]
+  id                  String    @id @default(cuid())
+  name                String
+  roomNumber          Int       @unique
+  target              String?
+  descriptionTitle    String?
+  descriptionContent  String?   @db.VarChar(10000)
+  adults              Int
+  children            Int
+  amenities           Amenitie[]
+  view                String
+  bed                 String
+  category            String
+  price               Int
+  images              Image[]
+  bookings            Booking[]
 }
 
 model VerificationToken {

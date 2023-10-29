@@ -58,6 +58,7 @@ const AdminUserForm = ({
             for (let i = 0; i < images.length; i++) {
                imagesForm.append(`image${i + 1}`, images[i]);
             }
+
             imagesForm.append("folderPath", "/profile-pictures");
             const imagesDataResponse = await fetch("/api/upload-images", {
                method: "POST",

@@ -8,16 +8,23 @@ import cloudinary from "@/lib/cloudinary/cloudinary";
 export async function POST(req: NextRequest) {
    const body = await req.json();
 
-   const { urlImage } = body;
+   const { url } = body;
 
    try {
-      deleteFile(urlImage, cloudinary);
+      const image = await prisma.image.findUnique({
+         where: {
+            url,
+         },
+      });
+
+      await deleteFile(image?.name, cloudinary);
 
       const deletedImage = await prisma.image.deleteMany({
          where: {
-            url: urlImage,
+            url,
          },
       });
+
       return NextResponse.json({ image: deletedImage });
    } catch (error) {
       return NextResponse.json({ error }, { status: 500 });

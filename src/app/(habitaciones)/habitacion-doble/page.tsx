@@ -45,29 +45,29 @@ export default function HabitacionEstandar() {
                "/fotos__hospedaje/304-1.jpg",
                "/fotos__hospedaje/304-2.jpg",
             ]}
-            recommendedRooms={[
-               {
-                  href: "/habitacion-triple",
-                  src: "/fotos__hospedaje/404.jpg",
-                  name: `Habitación Triple`,
-                  description: "Ideal para familias o grupos de viaje",
-                  price: 110,
-               },
-               {
-                  href: "/habitacion-elegante-matrimonial",
-                  src: "/fotos__hospedaje/301-1.jpg",
-                  name: "Habitación Elegante Matrimonial",
-                  description: "Ideal para parejas",
-                  price: 80,
-               },
-               {
-                  href: "/habitacion-matrimonial-clasica",
-                  src: "/fotos__hospedaje/401.jpg",
-                  name: "Habitación Clásica Matrimonial",
-                  description: "Ideal para parejas",
-                  price: 70,
-               },
-            ]}
+            // recommendedRooms={[
+            //    {
+            //       href: "/habitacion-triple",
+            //       src: "/fotos__hospedaje/404.jpg",
+            //       name: `Habitación Triple`,
+            //       description: "Ideal para familias o grupos de viaje",
+            //       price: 110,
+            //    },
+            //    {
+            //       href: "/habitacion-elegante-matrimonial",
+            //       src: "/fotos__hospedaje/301-1.jpg",
+            //       name: "Habitación Elegante Matrimonial",
+            //       description: "Ideal para parejas",
+            //       price: 80,
+            //    },
+            //    {
+            //       href: "/habitacion-matrimonial-clasica",
+            //       src: "/fotos__hospedaje/401.jpg",
+            //       name: "Habitación Clásica Matrimonial",
+            //       description: "Ideal para parejas",
+            //       price: 70,
+            //    },
+            // ]}
             backgroundImage="bg-[url('/fotos__hospedaje/304-2.jpg')]"
          />
       </main>

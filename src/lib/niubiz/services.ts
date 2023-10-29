@@ -17,8 +17,6 @@ export async function getAccessToken() {
 
    const result: string = await response.text();
 
-   console.log(result);
-
    return result;
 }
 
@@ -44,18 +42,16 @@ export async function getSessionToken({
          body: JSON.stringify({
             channel: "web",
             amount: amount,
-            antifraud: {
-               MDD15: "Valor MDD 15",
-               MDD20: "Valor MDD 20",
-               MDD33: "Valor MDD 33",
-            },
+            // antifraud: {
+            //    MDD15: "Valor MDD 15",
+            //    MDD20: "Valor MDD 20",
+            //    MDD33: "Valor MDD 33",
+            // },
          }),
       }
    );
 
    const result = await response.json();
-
-   console.log(result);
 
    const expirationTime = new Date(result.expirationTime);
 
