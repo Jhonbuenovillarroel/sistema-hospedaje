@@ -75,35 +75,36 @@ const DetallesHabitacion = async ({
                      />
                   )
             )}
-         {rooms &&
-            rooms
-               .map(
-                  (room: any, i: number) =>
-                     room.id !== searchParams.roomId && (
-                        <section key={i} className="my-20">
-                           <div>
-                              <div className="flex flex-col items-center justify-center">
-                                 <h3 className="text-4xl text-center font-bold">
-                                    Otras Habitaciones
-                                 </h3>
-                                 <p className="text-center max-w-[240px] mt-3">
-                                    También podrían ser de tu interés
-                                 </p>
-                              </div>
-                              <div className="mt-16 mb-24 h-full px-8 flex flex-col items-center justify-center md:flex-row md:items-start gap-16 md:gap-8">
+         <section className="my-20">
+            <div>
+               <div className="flex flex-col items-center justify-center">
+                  <h3 className="text-4xl text-center font-bold">
+                     Otras Habitaciones
+                  </h3>
+                  <p className="text-center max-w-[240px] mt-3">
+                     También podrían ser de tu interés
+                  </p>
+               </div>
+               <div className="mt-16 mb-24 h-full px-8 flex flex-col items-center justify-center md:flex-row md:items-start gap-16 md:gap-8">
+                  {rooms &&
+                     rooms
+                        .map(
+                           (room: any, i: number) =>
+                              room.id !== searchParams.roomId && (
                                  <RecommendedRoom
+                                    key={i}
                                     href={`/detalles-habitacion?roomId=${room.id}`}
                                     src={room.imageUrls[0]}
                                     name={room.name}
                                     description={room.description}
                                     price={room.price}
                                  />
-                              </div>
-                           </div>
-                        </section>
-                     )
-               )
-               .map((room: any, i: any) => i < 3 && room)}
+                              )
+                        )
+                        .map((room: any, i: any) => i < 3 && room)}
+               </div>
+            </div>
+         </section>
       </main>
    );
 };
