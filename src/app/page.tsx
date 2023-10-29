@@ -1,5 +1,3 @@
-"use client";
-
 import BookForm from "@/components/BookForm";
 import Gallery from "@/components/Gallery";
 import Room from "@/components/Room";
