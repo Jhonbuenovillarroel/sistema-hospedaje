@@ -44,17 +44,17 @@ export async function POST(req: NextRequest) {
       if (Array.from(form.entries()).length > 1) {
          const images = returnImages(form);
 
-         let urls = [];
+         // let urls = [];
 
-         for (let i = 0; i < images.length; i++) {
-            const res: any = await processImage(
-               images[i],
-               form.get("folderPath")
-            );
+         // for (let i = 0; i < images.length; i++) {
+         //    const res: any = await processImage(
+         //       images[i],
+         //       form.get("folderPath")
+         //    );
 
-            urls.push({ imageUrl: res.secure_url, imageName: res.public_id });
-         }
-         return NextResponse.json(urls);
+         //    urls.push({ imageUrl: res.secure_url, imageName: res.public_id });
+         // }
+         return NextResponse.json([]);
       } else {
          return NextResponse.json([]);
       }
