@@ -26,7 +26,6 @@ export async function POST(req: NextRequest) {
       amenities.push({ name: body.amenities[i] });
    }
 
-   console.log(body.images);
    for (let i = 0; i < body.images.length; i++) {
       images.push({
          url: body.images[i].imageUrl,

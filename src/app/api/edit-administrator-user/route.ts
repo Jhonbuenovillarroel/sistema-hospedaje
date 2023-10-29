@@ -11,8 +11,6 @@ export async function POST(req: NextRequest) {
 
    const { username, email, password, imagesData, userId } = body;
 
-   console.log(password);
-
    const users = await prisma.user.findMany();
 
    if (imagesData.length === 0) {

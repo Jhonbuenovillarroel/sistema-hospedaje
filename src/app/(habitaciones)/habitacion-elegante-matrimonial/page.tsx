@@ -50,29 +50,6 @@ export default function HabitacionEstandar() {
                "/fotos__hospedaje/301-1.jpg",
                "/fotos__hospedaje/301-2.jpg",
             ]}
-            // recommendedRooms={[
-            //    {
-            //       href: "/habitacion-estandar",
-            //       src: "/fotos__hospedaje/303-1.jpg",
-            //       name: `Habitación Estándar`,
-            //       description: "Ideal para persona sola o parejas",
-            //       price: 60,
-            //    },
-            //    {
-            //       href: "/habitacion-elegante-matrimonial",
-            //       src: "/fotos__hospedaje/301-1.jpg",
-            //       name: "Habitación Elegante Matrimonial",
-            //       description: "Ideal para parejas",
-            //       price: 80,
-            //    },
-            //    {
-            //       href: "/habitacion-matrimonial-superior",
-            //       src: "/fotos__hospedaje/201-1.jpg",
-            //       name: "Habitación Matrimonial Superior",
-            //       description: "Ideal para parejas",
-            //       price: 100,
-            //    },
-            // ]}
             backgroundImage="bg-[url('/fotos__hospedaje/301-1.jpg')]"
          />
       </main>
