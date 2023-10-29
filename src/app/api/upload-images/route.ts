@@ -31,11 +31,14 @@ export async function POST(req: NextRequest) {
 
             urls.push({ imageUrl: res.secure_url, imageName: res.public_id });
          }
-         return NextResponse.json(urls);
+         return NextResponse.json(urls).headers.set("Allow", "GET, POST, PUT");
       } else {
-         return NextResponse.json([]);
+         return NextResponse.json([]).headers.set("Allow", "GET, POST, PUT");
       }
    } catch (error) {
-      return NextResponse.json({ error }, { status: 400 });
+      return NextResponse.json({ error }, { status: 400 }).headers.set(
+         "Allow",
+         "GET, POST, PUT"
+      );
    }
 }
