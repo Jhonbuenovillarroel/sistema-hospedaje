@@ -8,6 +8,44 @@ export const deleteMultipleFiles = async (imageNames: any, cloudinary: any) => {
    }
 };
 
+export const processImage = async (
+   image: any,
+   cloudinary: any,
+   streamifier: any
+) => {
+   const bytes = await image.arrayBuffer();
+   const buffer = Buffer.from(bytes);
+
+   // const res = await new Promise((resolve, reject) => {
+   //    cloudinary.uploader
+   //       .upload_stream({}, (err, res) => {
+   //          if (err) {
+   //             reject(err);
+   //          } else {
+   //             resolve(res);
+   //          }
+   //       })
+   //       .end(buffer);
+   // });
+
+   const res = await new Promise((resolve, reject) => {
+      let cld_upload_stream = cloudinary.uploader.upload_stream(
+         {},
+         function (error: any, result: any) {
+            console.log(error, result);
+            if (error) {
+               reject(error);
+            }
+
+            resolve(result);
+         }
+      );
+      streamifier.createReadStream(buffer).pipe(cld_upload_stream);
+   });
+   console.log(res);
+   return res;
+};
+
 export const calculateMonth = (month: number) => {
    switch (month) {
       case 1:
