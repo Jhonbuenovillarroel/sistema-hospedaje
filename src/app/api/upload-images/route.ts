@@ -21,12 +21,12 @@ const processImage = async (image: any, folderPath: any) => {
    return response;
 };
 
-const uploadImage = async (folderPath: any) => {
-   const filePath = path.join(process.cwd(), `public${folderPath}`);
-   const res = await cloudinary.uploader.upload(filePath);
+// const uploadImage = async (folderPath: any) => {
+//    const filePath = path.join(process.cwd(), `public${folderPath}`);
+//    const res = await cloudinary.uploader.upload(filePath);
 
-   return res;
-};
+//    return res;
+// };
 
 const returnImages = (form: any) => {
    let images: any = [];
