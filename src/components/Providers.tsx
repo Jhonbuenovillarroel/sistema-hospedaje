@@ -2,7 +2,7 @@
 
 import { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 interface AvailableRoom {
    id: string;
@@ -41,6 +41,12 @@ export default function Providers({ children, session }: Props) {
    const updateAvailableRooms = (rooms: AvailableRoom[]) => {
       setAvailableRooms(rooms);
    };
+   const [toggleTheme, setToggleTheme] = useState<string>("light");
+
+   useEffect(() => {
+      localStorage.removeItem("name");
+      console.log(localStorage);
+   }, []);
 
    return (
       <MyGlobalContext.Provider

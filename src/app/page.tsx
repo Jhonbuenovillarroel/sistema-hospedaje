@@ -4,6 +4,7 @@ import Room from "@/components/Room";
 import Image from "next/image";
 import Link from "next/link";
 import { getRooms } from "@/actions/get-rooms";
+import { useEffect } from "react";
 
 export default async function Home() {
    const rooms = await getRooms();
