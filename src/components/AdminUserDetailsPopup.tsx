@@ -70,7 +70,7 @@ const AdminUserDetailsPopup = ({
          <div className="flex flex-col gap-1">
             <p className="font-bold text-lg">Foto:</p>
             <Image
-               className="w-24 rounded-full"
+               className="w-24 h-24 rounded-full"
                src={imageUrl}
                width={800}
                height={800}
