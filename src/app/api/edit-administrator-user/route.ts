@@ -16,9 +16,10 @@ export async function POST(req: NextRequest) {
    if (imagesData.length === 0) {
       for (let i = 0; i < users.length; i++) {
          if (users[i].id === userId) {
-            if (users[i].imageUrl && users[i].imageName) {
-               imagesData.push([users[i].imageUrl, users[i].imageName]);
-            }
+            imagesData.push({
+               imageUrl: users[i].imageUrl,
+               imageName: users[i].imageName,
+            });
          }
       }
    } else {
