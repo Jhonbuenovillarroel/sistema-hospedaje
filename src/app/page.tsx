@@ -103,6 +103,7 @@ export default async function Home() {
                   (room: any, i: number) =>
                      i < 2 && (
                         <Room
+                           key={i}
                            images={room.imageUrls}
                            name={room.name}
                            price={room.price}
