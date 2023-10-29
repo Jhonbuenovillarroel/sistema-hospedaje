@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import path from "path";
 import cloudinary from "@/lib/cloudinary/cloudinary";
 
 const processImage = async (image: any, folderPath: any) => {
