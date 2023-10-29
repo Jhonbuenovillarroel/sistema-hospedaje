@@ -101,7 +101,7 @@ const DetallesHabitacion = async ({
                                  />
                               )
                         )
-                        .map((room: any, i: any) => i < 3 && room)}
+                        .map((room: any, i: any) => i < 4 && room)}
                </div>
             </div>
          </section>
