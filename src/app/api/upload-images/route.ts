@@ -1,23 +1,39 @@
 import { NextRequest, NextResponse } from "next/server";
 import cloudinary from "@/lib/cloudinary/cloudinary";
+import streamifier from "streamifier";
 
 const processImage = async (image: any, folderPath: any) => {
    const bytes = await image.arrayBuffer();
    const buffer = Buffer.from(bytes);
 
-   const response = await new Promise((resolve, reject) => {
-      cloudinary.uploader
-         .upload_stream({}, (err, res) => {
-            if (err) {
-               reject(err);
-            } else {
-               resolve(res);
-            }
-         })
-         .end(buffer);
-   });
+   // const res = await new Promise((resolve, reject) => {
+   //    cloudinary.uploader
+   //       .upload_stream({}, (err, res) => {
+   //          if (err) {
+   //             reject(err);
+   //          } else {
+   //             resolve(res);
+   //          }
+   //       })
+   //       .end(buffer);
+   // });
 
-   return response;
+   const res = await new Promise((resolve, reject) => {
+      let cld_upload_stream = cloudinary.uploader.upload_stream(
+         {},
+         function (error, result) {
+            console.log(error, result);
+            if (error) {
+               reject(error);
+            }
+
+            resolve(result);
+         }
+      );
+      streamifier.createReadStream(buffer).pipe(cld_upload_stream);
+   });
+   console.log(res);
+   return res;
 };
 
 // const uploadImage = async (folderPath: any) => {
@@ -44,17 +60,17 @@ export async function POST(req: NextRequest) {
       if (Array.from(form.entries()).length > 1) {
          const images = returnImages(form);
 
-         // let urls = [];
+         let urls = [];
 
-         // for (let i = 0; i < images.length; i++) {
-         //    const res: any = await processImage(
-         //       images[i],
-         //       form.get("folderPath")
-         //    );
+         for (let i = 0; i < images.length; i++) {
+            const res: any = await processImage(
+               images[i],
+               form.get("folderPath")
+            );
 
-         //    urls.push({ imageUrl: res.secure_url, imageName: res.public_id });
-         // }
-         return NextResponse.json([]);
+            urls.push({ imageUrl: res.secure_url, imageName: res.public_id });
+         }
+         return NextResponse.json(urls);
       } else {
          return NextResponse.json([]);
       }
