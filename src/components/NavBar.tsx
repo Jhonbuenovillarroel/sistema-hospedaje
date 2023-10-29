@@ -22,7 +22,7 @@ export default function NavBar({
             onClick={() => {
                toggleMenu();
             }}
-            className="w-6 h-6 lg:hidden absolute top-7 right-6 cursor-pointer"
+            className="w-6 h-6 text-black dark:text-white lg:hidden absolute top-7 right-6 cursor-pointer"
          />
          <li>
             <Link

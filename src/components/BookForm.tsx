@@ -208,7 +208,7 @@ export default function BookForm({
          }}
          className={className}
       >
-         <div className="relative flex flex-col gap-1">
+         <div className="relative text-black dark:text-white flex flex-col gap-1">
             <label className=" font-medium" htmlFor="check-in">
                Llegada:
             </label>
@@ -231,7 +231,7 @@ export default function BookForm({
                id="check-in"
                name="check-in"
                type="date"
-               className="calendar-white w-full outline-none bg-transparent text-sm border-b px-2 h-9"
+               className="dark:calendar-white border-black calendar-pointer dark:border-white w-full outline-none bg-transparent text-sm border-b px-2 h-9"
             />
             {invalidDate && (
                <p className="text-red-400 mt-1 sticky bottom-[-32px] transition-all duration-300">
@@ -239,7 +239,7 @@ export default function BookForm({
                </p>
             )}
          </div>
-         <div className="flex relative flex-col gap-1">
+         <div className="flex text-black dark:text-white relative flex-col gap-1">
             <label className=" font-medium" htmlFor="check-out">
                Salida:
             </label>
@@ -261,7 +261,7 @@ export default function BookForm({
                id="check-out"
                name="check-out"
                type="date"
-               className="calendar-white w-full outline-none bg-transparent text-sm border-b px-2 h-9"
+               className="dark:calendar-white calendar-pointer border-black dark:border-white w-full outline-none bg-transparent text-sm border-b px-2 h-9"
             />
             {invalidDate && (
                <p className="text-red-400 sticky bottom-[-32px] mt-1 transition-all duration-300">
@@ -270,18 +270,22 @@ export default function BookForm({
             )}
          </div>
          {!addBookingManually && (
-            <div className="grid grid-cols-2 gap-4 sm:col-span-2">
+            <div className="grid text-black dark:text-white grid-cols-2 gap-4 sm:col-span-2">
                <div className="flex flex-col gap-1">
                   <label className=" font-medium" htmlFor="adultos">
                      Adultos:
                   </label>
                   <select
-                     className="outline-none bg-transparent text-sm border px-2 h-9"
+                     className="outline-none cursor-pointer border-black dark:border-white bg-transparent text-sm border px-2 h-9"
                      name="adultos"
                      id="adultos"
                   >
                      {adultos.map((elemento, i) => (
-                        <option key={i} className="bg-black" value={elemento}>
+                        <option
+                           key={i}
+                           className="bg-white cursor-pointer dark:bg-black"
+                           value={elemento}
+                        >
                            {elemento}
                         </option>
                      ))}
@@ -292,12 +296,16 @@ export default function BookForm({
                      Niños:
                   </label>
                   <select
-                     className="outline-none bg-transparent text-sm border px-2 h-9"
+                     className="outline-none cursor-pointer border-black dark:border-white bg-transparent text-sm border px-2 h-9"
                      name="niños"
                      id="niños"
                   >
                      {niños.map((elemento, i) => (
-                        <option key={i} className="bg-black" value={elemento}>
+                        <option
+                           key={i}
+                           className="bg-white cursor-pointer dark:bg-black"
+                           value={elemento}
+                        >
                            {elemento}
                         </option>
                      ))}
@@ -320,7 +328,7 @@ export default function BookForm({
                   return;
                }
             }}
-            className={`bg-[#CB993F] ${alignButton} uppercase text-xs font-medium tracking-widest h-9 mt-4`}
+            className={`bg-[#CB993F] text-white ${alignButton} uppercase text-xs font-medium tracking-widest h-9 mt-4`}
          >
             {loading ? (
                <div className="flex items-center justify-center" role="status">

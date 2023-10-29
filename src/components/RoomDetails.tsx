@@ -67,7 +67,7 @@ export default function RoomDetails({
                </div>
             </div>
          </section>
-         <section className="mb-20">
+         <section className="">
             <div className="">
                <div className="z-10 relative bottom-16 sm:bottom-20 flex flex-wrap gap-x-4 gap-y-2 items-center justify-center uppercase text-sm font-semibold text-zinc-200">
                   <Link href="#">Detalles</Link>
@@ -128,7 +128,7 @@ export default function RoomDetails({
             </div>
          </section>
 
-         <section className="">
+         <section className="mt-8">
             <div className="flex flex-col sm:grid sm:grid-cols-2 sm:items-center sm:justify-items-center gap-10 items-center justify-center">
                <div>
                   <div>

@@ -14,7 +14,7 @@ export default function RootLayout({
    children: React.ReactNode;
 }) {
    return (
-      <main className="lg:flex">
+      <main className="lg:flex bg-zinc-950 text-white">
          <SideBarPanelAdministracion />
          {children}
       </main>

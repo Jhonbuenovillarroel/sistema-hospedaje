@@ -3,6 +3,7 @@
 import { Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { createContext, useContext, useEffect, useState } from "react";
+import Loading from "@/app/loading";
 
 interface AvailableRoom {
    id: string;
@@ -22,6 +23,8 @@ interface AvailableRoom {
 export type GlobalContent = {
    availableRooms: AvailableRoom[];
    updateAvailableRooms: Function;
+   theme: string;
+   setTheme: Function;
 };
 
 interface Props {
@@ -32,6 +35,8 @@ interface Props {
 export const MyGlobalContext = createContext<GlobalContent>({
    availableRooms: [],
    updateAvailableRooms: () => {},
+   theme: "light",
+   setTheme: () => {},
 });
 
 export const useGlobalContext = () => useContext(MyGlobalContext);
@@ -41,18 +46,29 @@ export default function Providers({ children, session }: Props) {
    const updateAvailableRooms = (rooms: AvailableRoom[]) => {
       setAvailableRooms(rooms);
    };
-   const [toggleTheme, setToggleTheme] = useState<string>("light");
+   const [theme, setTheme] = useState<string>("light");
+
+   // useEffect(() => {
+   //    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+   //       setTheme("dark");
+   //    }
+   // }, []);
 
    useEffect(() => {
-      localStorage.removeItem("name");
-      console.log(localStorage);
-   }, []);
+      if (theme === "dark") {
+         document.documentElement.classList.add("dark");
+      } else {
+         document.documentElement.classList.remove("dark");
+      }
+   }, [theme]);
 
    return (
       <MyGlobalContext.Provider
          value={{
             availableRooms,
             updateAvailableRooms,
+            theme,
+            setTheme,
          }}
       >
          <SessionProvider session={session}>{children}</SessionProvider>

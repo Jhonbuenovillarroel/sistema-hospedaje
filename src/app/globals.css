@@ -31,8 +31,13 @@
    height: 0px;
 }
 
-.calendar-white::-webkit-calendar-picker-indicator {
-   filter: invert(1);
+@layer utilities {
+   .calendar-white::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+   }
+   .calendar-pointer::-webkit-calendar-picker-indicator {
+      cursor: pointer;
+   }
 }
 
 .image-container div:nth-child(1),
@@ -81,21 +86,3 @@
    rotate: 90deg;
    opacity: 1;
 }
-
-/* @media (prefers-color-scheme: dark) {
-   :root {
-      --foreground-rgb: 255, 255, 255;
-      --background-start-rgb: 7, 7, 7;
-      --background-end-rgb: 7, 7, 7;
-   }
-}
-
-body {
-   color: rgb(var(--foreground-rgb));
-   background: linear-gradient(
-         to bottom,
-         transparent,
-         rgb(var(--background-end-rgb))
-      )
-      rgb(var(--background-start-rgb));
-} */

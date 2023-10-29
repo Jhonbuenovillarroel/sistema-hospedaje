@@ -14,10 +14,10 @@ export default function ResultadosDeBusqueda() {
    const dates = useLiveQuery(() => db.dates.toArray());
 
    return (
-      <main>
+      <main className="bg-zinc-950 text-white">
          <section className="">
-            <div className="grid grid-cols-1 lg:grid-cols-3 pt-32 mb-20">
-               <div className="col-span-2 w-full px-8 flex flex-col gap-20 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-3 pt-32 pb-20">
+               <div className="col-span-2 order-2 mt-20 lg:mt-0 lg:order-1 w-full px-8 flex flex-col gap-20 items-start">
                   {availableRooms.length !== 0 && dates?.length !== 0 ? (
                      <>
                         <p className="text-xl font-medium">
@@ -70,15 +70,15 @@ export default function ResultadosDeBusqueda() {
                         ))}
                      </>
                   ) : (
-                     <div>
-                        <p>
+                     <div className="w-full">
+                        <p className="text-center">
                            Todas las habitaciones están reservadas para esta
                            fecha... Por Favor realiza otra búsqueda
                         </p>
                      </div>
                   )}
                </div>
-               <div className="flex mt-20 px-8 items-start justify-center">
+               <div className="flex order-1 lg:order-2 px-8 items-start justify-center">
                   <BookForm
                      className="w-full flex flex-col gap-4 max-w-[400px] lg:max-w-[300px]"
                      alignButton=""

@@ -497,7 +497,7 @@ export default function Pago() {
    }, [rooms]);
 
    return dateExists ? (
-      <main>
+      <main className="bg-zinc-950 text-white">
          <section className="py-40 grid grid-cols-1 lg:grid-cols-4 gap-10 px-8 sm:px-12 md:px-16 lg:px-24">
             <div className="col-span-3 max-w-[600px]">
                <div>
@@ -842,7 +842,7 @@ export default function Pago() {
          </section>
       </main>
    ) : (
-      <main>
+      <main className="bg-zinc-950 text-white">
          <div className="py-56 px-20 text-2xl font-medium">
             No escogiste ninguna habitación para tu estadía... Escoge una por
             favor

@@ -5,8 +5,8 @@ import Link from "next/link";
 
 export default function Blog() {
    return (
-      <main>
-         <section className="mb-20 md:px-2 lg:px-12 xl:px-16">
+      <main className="bg-zinc-950 text-white">
+         <section className="pb-20 md:px-2 lg:px-12 xl:px-16">
             <div className="pt-24 px-8">
                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
                   Descubre Jauja: Historias, Sabores y Aventuras
@@ -20,7 +20,7 @@ export default function Blog() {
                </p>
             </div>
          </section>
-         <section className="mb-20">
+         <section className="pb-20">
             <div className="mt-8 px-8 flex flex-wrap gap-16 justify-center">
                <article className="max-w-[320px]">
                   <Image

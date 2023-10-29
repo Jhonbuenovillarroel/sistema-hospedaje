@@ -10,8 +10,8 @@ export default async function Home() {
    const rooms = await getRooms();
 
    return (
-      <main className="">
-         <section className="h-screen relative flex flex-col items-center justify-center">
+      <main className="bg-zinc-950 transition-all duration-300 ease-out">
+         <section className="h-screen text-white relative flex flex-col items-center justify-center">
             <Gallery displacement={320}>
                <div className="min-w-full relative before:content-['] before:absolute before:top-0 before:right-0 before:bottom-0 before:left-0 before:bg-[rgba(0,0,0,0.6)] snap-center h-screen bg-cover bg-no-repeat bg-center bg-[url('/plaza-jauja-noche.jpg')] flex items-center justify-center">
                   <div className="w-[200px] sm:w-[360px] md:w-[400px] lg:w-[700px] z-10 flex flex-col items-center justify-center text-center">
@@ -53,7 +53,7 @@ export default async function Home() {
                alignButton="md:self-end"
             />
          </section>
-         <section className="my-16 xl:flex lg:gap-32">
+         <section className="my-16 text-black dark:text-white xl:flex lg:gap-32">
             <div className="relative xl:top-20 px-6 lg:px-20 xl:max-w-[600px] flex flex-col xl:items-center xl:justify-center">
                <p className="uppercase tracking-widest text-xs text-center xl:self-start xl:text-start">
                   Sobre Hospedaje El Rinconcito
@@ -98,7 +98,7 @@ export default async function Home() {
                </div>
             </div>
          </section>
-         <section className="mt-60">
+         <section className="mt-60 text-white">
             {rooms &&
                rooms.map(
                   (room: any, i: number) =>
@@ -120,7 +120,7 @@ export default async function Home() {
                )}
          </section>
 
-         <section className="mt-20 mb-20">
+         <section className="mt-20 pb-20 text-black dark:text-white">
             <div className="px-6">
                <p className="uppercase tracking-widest text-xs text-center">
                   Maravilla Cultural

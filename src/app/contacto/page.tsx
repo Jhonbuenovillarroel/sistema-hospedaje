@@ -10,8 +10,8 @@ export default function Contacto() {
    const [loading, setLoading] = useState<boolean>(false);
 
    return (
-      <main>
-         <section className="mb-20">
+      <main className="bg-zinc-950 text-white">
+         <section className="mb-20 ">
             <div className="pt-24 px-8 md:flex md:justify-between md:gap-8 lg:px-16">
                <div className="md:max-w-[500px] lg:max-w-[800px]">
                   <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">
@@ -22,8 +22,8 @@ export default function Contacto() {
                      privilegiado a sus tesoros culturales y naturales
                   </p>
                </div>
-               <button className="bg-[#CB993F] flex items-center justify-center gap-2 h-10 rounded-full uppercase text-xs font-medium tracking-widest mt-8 w-52">
-                  <FaMapMarkerAlt /> Obtener Dirección
+               <button className="bg-[#CB993F] text-white flex items-center justify-center gap-2 h-10 rounded-full uppercase text-xs font-medium tracking-widest mt-8 w-52">
+                  <FaMapMarkerAlt className="text-white" /> Obtener Dirección
                </button>
             </div>
          </section>
@@ -57,7 +57,7 @@ export default function Contacto() {
                </div>
             </div>
          </section>
-         <section className="mb-20 mt-20 md:flex">
+         <section className="pb-20 mt-20 md:flex">
             <div className="px-8 md:pl-14 lg:px-20 md:max-w-[1500px]">
                <h2 className="text-3xl font-bold">
                   ¿Tienes alguna duda o pregunta?
@@ -173,7 +173,7 @@ export default function Contacto() {
                         </label>
                      </div>
 
-                     <button className="bg-[#CB993F] hover:scale-110 transition-all duration-300 flex items-center justify-center gap-2 h-10 rounded-full uppercase text-xs font-medium tracking-widest mt-8 w-40">
+                     <button className="bg-[#CB993F] text-white hover:scale-110 transition-all duration-300 flex items-center justify-center gap-2 h-10 rounded-full uppercase text-xs font-medium tracking-widest mt-8 w-40">
                         {loading ? (
                            <div
                               className="flex items-center justify-center"
@@ -200,7 +200,7 @@ export default function Contacto() {
                         ) : (
                            <>
                               <p>Enviar</p>
-                              <BiSolidSend className="w-3 h-3" />
+                              <BiSolidSend className="w-3 h-3 text-white" />
                            </>
                         )}
                      </button>

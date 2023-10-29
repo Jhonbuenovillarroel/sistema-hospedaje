@@ -23,7 +23,7 @@ export default function Room({
    href,
 }: Props) {
    return (
-      <div className="bg-zinc-900 pb-12 md:grid md:grid-cols-8 xl:grid-cols-9 md:pb-0">
+      <div className="bg-zinc-900 text-white pb-12 md:grid md:grid-cols-8 xl:grid-cols-9 md:pb-0">
          <div className="relative col-span-4 lg:col-span-5 xl:col-span-6 order-2 h-full w-full">
             <Gallery displacement={240}>
                {images &&

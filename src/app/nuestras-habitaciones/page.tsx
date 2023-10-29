@@ -14,7 +14,7 @@ export default async function NuestrasHabitaciones() {
    const cookieStore = cookies();
 
    return (
-      <main>
+      <main className="text-white bg-zinc-950">
          <section>
             <div className="pt-24 md:pt-32 px-8">
                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold">

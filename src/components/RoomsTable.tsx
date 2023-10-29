@@ -13,6 +13,7 @@ import { MdDelete, MdOutlineEditNote } from "react-icons/md";
 import RoomDetailsPopup from "@/components/RoomDetailsPopup";
 import { Room } from "@/app/panel-administracion/habitaciones/page";
 import { deleteRoom } from "@/actions/delete-room";
+import { useGlobalContext } from "./Providers";
 
 interface Props {
    rooms: Room[];

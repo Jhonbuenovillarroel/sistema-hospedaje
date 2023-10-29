@@ -61,7 +61,7 @@ const Page = () => {
 
    if (errorExists) {
       return (
-         <div className="flex items-center justify-center py-40">
+         <div className="flex bg-zinc-950 text-white items-center justify-center py-40">
             Este enlace para cambiar tu contraseña ya caducó
          </div>
       );
@@ -100,7 +100,7 @@ const Page = () => {
       );
    } else {
       return (
-         <main>
+         <main className="bg-zinc-950 text-white">
             <div className="flex items-center justify-center py-40">
                <div className="flex max-w-[400px] flex-col px-10 pt-12 pb-14 rounded-lg bg-zinc-900 items-center justify-center">
                   <h1 className="text-3xl font-bold text-center">

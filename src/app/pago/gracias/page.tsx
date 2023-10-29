@@ -3,7 +3,7 @@ import React from "react";
 
 const Page = () => {
    return (
-      <main className="py-40">
+      <main className="py-40 bg-zinc-950 text-white">
          <div className="flex flex-col px-8 items-center justify-center">
             <Image
                className="w-40"

@@ -14,7 +14,7 @@ const Loading = () => {
          <div className="flex items-center justify-center" role="status">
             <svg
                aria-hidden="true"
-               className="w-6 h-6 mr-2 text-white animate-spin dark:text-gray-600 fill-white"
+               className="w-6 h-6 mr-2 text-zinc-700 animate-spin dark:text-gray-600 fill-[#dbb264]"
                viewBox="0 0 100 101"
                fill="none"
                xmlns="http://www.w3.org/2000/svg"

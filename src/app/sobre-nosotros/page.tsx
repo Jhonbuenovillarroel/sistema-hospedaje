@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function SobreNosotros() {
    return (
-      <main>
+      <main className="dark:bg-zinc-950 text-black dark:text-white">
          <section className="">
             <div className="pt-24 px-8 md:px-20 lg:px-28">
                <h1 className="text-3xl md:text-4xl lg:text-5xl max-w-[800px] font-bold">
@@ -67,7 +67,7 @@ export default function SobreNosotros() {
                </Gallery>
             </div>
          </section>
-         <section className="mb-16">
+         <section className="pb-16">
             <div className="pt-24 px-8 md:max-w-[800px] md:px-20 lg:max-w-[950px] lg:px-28">
                <h2 className="text-3xl font-bold">
                   Nuestra Historia en Hospedaje &quot;El Rinconcito&quot;

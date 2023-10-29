@@ -11,7 +11,7 @@ export default function Footer() {
    }
 
    return (
-      <footer className="bg-zinc-900 pb-8">
+      <footer className="bg-zinc-900 pb-8 text-white">
          <div className="flex flex-col md:flex-row items-center justify-center gap-10 lg:gap-16 xl:gap-28 pt-16">
             <div className="text-center max-w-[300px] md:max-w-[200px] lg:max-w-[400px]">
                <p className="text-sm font-semibold tracking-widest uppercase">

@@ -15,7 +15,7 @@ export default function InicioSesion() {
    const router = useRouter();
 
    return (
-      <main>
+      <main className="bg-zinc-950 text-white">
          <section className="flex items-center justify-center">
             <div className="mt-28 mb-20 flex flex-col items-center justify-center">
                <div className="flex flex-col items-center justify-center bg-zinc-900 px-8 py-10 rounded-lg">

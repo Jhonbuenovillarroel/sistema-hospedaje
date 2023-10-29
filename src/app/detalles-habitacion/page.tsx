@@ -21,7 +21,7 @@ const DetallesHabitacion = async ({
    const rooms: any = await getRooms();
 
    return (
-      <main>
+      <main className="bg-zinc-950 text-white">
          {rooms &&
             rooms.map(
                (room: any, i: number) =>
@@ -75,7 +75,7 @@ const DetallesHabitacion = async ({
                      />
                   )
             )}
-         <section className="my-20">
+         <section className="pt-20 pb-20">
             <div>
                <div className="flex flex-col items-center justify-center">
                   <h3 className="text-4xl text-center font-bold">
