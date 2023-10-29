@@ -5,9 +5,11 @@ import Gallery from "@/components/Gallery";
 import Room from "@/components/Room";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { getRooms } from "@/actions/get-rooms";
 
-export default function Home() {
+export default async function Home() {
+   const rooms = await getRooms();
+
    return (
       <main className="">
          <section className="h-screen relative flex flex-col items-center justify-center">
@@ -98,21 +100,24 @@ export default function Home() {
             </div>
          </section>
          <section className="mt-60">
-            <Room
-               images={[
-                  "/fotos__hospedaje/303-1.jpg",
-                  "/fotos__hospedaje/303-2.jpg",
-               ]}
-               name="Habitacion Estándar"
-               price={60}
-               characteristics={[
-                  "Cama 2 plazas",
-                  "2 adultos y 1 niño",
-                  "Habitación interior",
-                  "Persona sola o pareja",
-               ]}
-               href="/habitacion-estandar"
-            />
+            {rooms &&
+               rooms.map(
+                  (room: any, i: number) =>
+                     i < 2 && (
+                        <Room
+                           images={room.imageUrls}
+                           name={room.name}
+                           price={room.price}
+                           characteristics={[
+                              room.bed,
+                              `${room.adults} adultos y ${room.children} niños`,
+                              room.view,
+                              room.target,
+                           ]}
+                           href={`/detalles-habitacion?roomId=${room.id}`}
+                        />
+                     )
+               )}
          </section>
 
          <section className="mt-20 mb-20">
