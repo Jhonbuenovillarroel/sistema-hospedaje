@@ -30,7 +30,7 @@ export const processImage = async (
 
    const res = await new Promise((resolve, reject) => {
       let cld_upload_stream = cloudinary.uploader.upload_stream(
-         {},
+         { resource_type: "image" },
          function (error: any, result: any) {
             console.log(error, result);
             if (error) {
@@ -40,9 +40,9 @@ export const processImage = async (
             resolve(result);
          }
       );
+
       streamifier.createReadStream(buffer).pipe(cld_upload_stream);
    });
-   console.log(res);
    return res;
 };
 
