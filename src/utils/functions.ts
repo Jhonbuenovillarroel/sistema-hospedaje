@@ -32,7 +32,7 @@ export const processImage = async (
       let cld_upload_stream = cloudinary.uploader.upload_stream(
          { resource_type: "image" },
          function (error: any, result: any) {
-            console.log(error, result);
+            // console.log(error, result);
             if (error) {
                reject(error);
             }

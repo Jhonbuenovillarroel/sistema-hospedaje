@@ -7,6 +7,8 @@ export async function POST(req: NextRequest) {
 
    const { username, email, password, imagesData, userId } = body;
 
+   console.log(imagesData);
+
    const users = await prisma.user.findMany();
 
    for (let i = 0; i < users.length; i++) {
@@ -36,8 +38,8 @@ export async function POST(req: NextRequest) {
          username: username,
          email: email,
          password: passwordHashed,
-         imageUrl: imagesData[0].imageUrl,
-         imageName: imagesData[0].imageName,
+         imageUrl: imagesData.length === 0 ? "" : imagesData[0].imageUrl,
+         imageName: imagesData.length === 0 ? "" : imagesData[0].imageName,
       },
    });
 
