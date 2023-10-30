@@ -53,7 +53,7 @@ export default async function Home() {
                alignButton="md:self-end"
             />
          </section>
-         <section className="my-16 text-black dark:text-white xl:flex lg:gap-32">
+         <section className="my-16 xl:flex lg:gap-32">
             <div className="relative xl:top-20 px-6 lg:px-20 xl:max-w-[600px] flex flex-col xl:items-center xl:justify-center">
                <p className="uppercase tracking-widest text-xs text-center xl:self-start xl:text-start">
                   Sobre Hospedaje El Rinconcito
@@ -120,7 +120,7 @@ export default async function Home() {
                )}
          </section>
 
-         <section className="mt-20 pb-20 text-black dark:text-white">
+         <section className="mt-20 pb-20 text-white">
             <div className="px-6">
                <p className="uppercase tracking-widest text-xs text-center">
                   Maravilla Cultural
