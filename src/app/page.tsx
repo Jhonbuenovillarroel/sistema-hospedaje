@@ -10,7 +10,7 @@ export default async function Home() {
    const rooms = await getRooms();
 
    return (
-      <main className="bg-zinc-950 transition-all duration-300 ease-out">
+      <main className="bg-zinc-950 text-white transition-all duration-300 ease-out">
          <section className="h-screen text-white relative flex flex-col items-center justify-center">
             <Gallery displacement={320}>
                <div className="min-w-full relative before:content-['] before:absolute before:top-0 before:right-0 before:bottom-0 before:left-0 before:bg-[rgba(0,0,0,0.6)] snap-center h-screen bg-cover bg-no-repeat bg-center bg-[url('/plaza-jauja-noche.jpg')] flex items-center justify-center">
