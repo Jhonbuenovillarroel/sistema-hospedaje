@@ -84,7 +84,7 @@ export default function Header() {
             />
             <NavBar
                toggleMenu={toggleMenu}
-               className="transition-all duration-700 ease-in-out overflow-hidden lg:hidden w-full sm:flex-col items-center justify-center gap-6 fixed z-0 top-0 right-0 bottom-0 left-0 bg-white dark:bg-black text-black dark:text-white"
+               className="transition-all duration-700 ease-in-out overflow-hidden lg:hidden w-full sm:flex-col items-center justify-center gap-6 fixed z-0 top-0 right-0 bottom-0 left-0 bg-black text-white"
                showMenu={showMenu}
                letterType="uppercase text-sm"
             />

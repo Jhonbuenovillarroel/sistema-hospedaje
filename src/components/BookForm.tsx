@@ -231,7 +231,7 @@ export default function BookForm({
                id="check-in"
                name="check-in"
                type="date"
-               className="calendar-white calendar-pointer border-white w-full outline-none bg-transparent text-sm border-b px-2 h-9"
+               className="calendar-white text-white calendar-pointer border-white w-full outline-none bg-transparent text-sm border-b px-2 h-9"
             />
             {invalidDate && (
                <p className="text-red-400 mt-1 sticky bottom-[-32px] transition-all duration-300">
@@ -261,7 +261,7 @@ export default function BookForm({
                id="check-out"
                name="check-out"
                type="date"
-               className="calendar-white calendar-pointer border-white w-full outline-none bg-transparent text-sm border-b px-2 h-9"
+               className="calendar-white text-white calendar-pointer border-white w-full outline-none bg-transparent text-sm border-b px-2 h-9"
             />
             {invalidDate && (
                <p className="text-red-400 sticky bottom-[-32px] mt-1 transition-all duration-300">
@@ -283,7 +283,7 @@ export default function BookForm({
                      {adultos.map((elemento, i) => (
                         <option
                            key={i}
-                           className="bg-white cursor-pointer dark:bg-black"
+                           className="cursor-pointer bg-black"
                            value={elemento}
                         >
                            {elemento}
@@ -303,7 +303,7 @@ export default function BookForm({
                      {niños.map((elemento, i) => (
                         <option
                            key={i}
-                           className="bg-white cursor-pointer dark:bg-black"
+                           className="bg-white cursor-pointer bg-black"
                            value={elemento}
                         >
                            {elemento}
