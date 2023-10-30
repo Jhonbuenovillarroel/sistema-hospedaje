@@ -208,7 +208,7 @@ export default function BookForm({
          }}
          className={className}
       >
-         <div className="relative text-black dark:text-white flex flex-col gap-1">
+         <div className="relative text-white flex flex-col gap-1">
             <label className=" font-medium" htmlFor="check-in">
                Llegada:
             </label>
@@ -231,7 +231,7 @@ export default function BookForm({
                id="check-in"
                name="check-in"
                type="date"
-               className="dark:calendar-white border-black calendar-pointer dark:border-white w-full outline-none bg-transparent text-sm border-b px-2 h-9"
+               className="calendar-white calendar-pointer border-white w-full outline-none bg-transparent text-sm border-b px-2 h-9"
             />
             {invalidDate && (
                <p className="text-red-400 mt-1 sticky bottom-[-32px] transition-all duration-300">
@@ -239,7 +239,7 @@ export default function BookForm({
                </p>
             )}
          </div>
-         <div className="flex text-black dark:text-white relative flex-col gap-1">
+         <div className="flex text-white relative flex-col gap-1">
             <label className=" font-medium" htmlFor="check-out">
                Salida:
             </label>
@@ -261,7 +261,7 @@ export default function BookForm({
                id="check-out"
                name="check-out"
                type="date"
-               className="dark:calendar-white calendar-pointer border-black dark:border-white w-full outline-none bg-transparent text-sm border-b px-2 h-9"
+               className="calendar-white calendar-pointer border-white w-full outline-none bg-transparent text-sm border-b px-2 h-9"
             />
             {invalidDate && (
                <p className="text-red-400 sticky bottom-[-32px] mt-1 transition-all duration-300">
@@ -270,13 +270,13 @@ export default function BookForm({
             )}
          </div>
          {!addBookingManually && (
-            <div className="grid text-black dark:text-white grid-cols-2 gap-4 sm:col-span-2">
+            <div className="grid text-white grid-cols-2 gap-4 sm:col-span-2">
                <div className="flex flex-col gap-1">
                   <label className=" font-medium" htmlFor="adultos">
                      Adultos:
                   </label>
                   <select
-                     className="outline-none cursor-pointer border-black dark:border-white bg-transparent text-sm border px-2 h-9"
+                     className="outline-none cursor-pointer border-white bg-transparent text-sm border px-2 h-9"
                      name="adultos"
                      id="adultos"
                   >
@@ -296,7 +296,7 @@ export default function BookForm({
                      Niños:
                   </label>
                   <select
-                     className="outline-none cursor-pointer border-black dark:border-white bg-transparent text-sm border px-2 h-9"
+                     className="outline-none cursor-pointer border-white bg-transparent text-sm border px-2 h-9"
                      name="niños"
                      id="niños"
                   >
