@@ -59,7 +59,7 @@ const AdminUserForm = ({
                imagesForm.append(`image${i + 1}`, images[i]);
             }
 
-            imagesForm.append("folderPath", "/profile-pictures");
+            imagesForm.append("folderPath", "hospedaje-rinconcito/users");
             const imagesDataResponse = await fetch("/api/upload-images", {
                method: "POST",
                body: imagesForm,

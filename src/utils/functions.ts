@@ -11,28 +11,16 @@ export const deleteMultipleFiles = async (imageNames: any, cloudinary: any) => {
 export const processImage = async (
    image: any,
    cloudinary: any,
-   streamifier: any
+   streamifier: any,
+   folder: any
 ) => {
    const bytes = await image.arrayBuffer();
    const buffer = Buffer.from(bytes);
 
-   // const res = await new Promise((resolve, reject) => {
-   //    cloudinary.uploader
-   //       .upload_stream({}, (err, res) => {
-   //          if (err) {
-   //             reject(err);
-   //          } else {
-   //             resolve(res);
-   //          }
-   //       })
-   //       .end(buffer);
-   // });
-
    const res = await new Promise((resolve, reject) => {
       let cld_upload_stream = cloudinary.uploader.upload_stream(
-         { resource_type: "image" },
+         { resource_type: "image", folder },
          function (error: any, result: any) {
-            // console.log(error, result);
             if (error) {
                reject(error);
             }

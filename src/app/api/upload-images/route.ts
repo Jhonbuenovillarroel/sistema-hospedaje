@@ -26,7 +26,8 @@ export async function POST(req: NextRequest) {
             const res: any = await processImage(
                images[i],
                cloudinary,
-               streamifier
+               streamifier,
+               form.get("folderPath")
             );
 
             urls.push({ imageUrl: res.secure_url, imageName: res.public_id });
