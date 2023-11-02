@@ -4,10 +4,15 @@ import Room from "@/components/Room";
 import Image from "next/image";
 import Link from "next/link";
 import { getRooms } from "@/actions/get-rooms";
-import { useEffect } from "react";
+
+async function getData() {
+   const res = await getRooms();
+
+   return res;
+}
 
 export default async function Home() {
-   const rooms = await getRooms();
+   const rooms = await getData();
 
    return (
       <main className="bg-zinc-950 text-white transition-all duration-300 ease-out">
