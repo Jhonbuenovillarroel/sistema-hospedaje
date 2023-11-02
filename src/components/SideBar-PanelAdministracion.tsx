@@ -42,7 +42,6 @@ export default function SideBarPanelAdministracion() {
             color: "#fff",
             confirmButtonColor: "#CB993F",
          });
-         signOut();
 
          return;
       }
